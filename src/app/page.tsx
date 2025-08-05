@@ -17,7 +17,7 @@ export default function WeddingInvitation() {
 
   // Countdown timer
   useEffect(() => {
-    const targetDate = new Date("June 5, 2025 00:00:00").getTime()
+    const targetDate = new Date("August 20, 2025 00:00:00").getTime()
 
     const timer = setInterval(() => {
       const now = new Date().getTime()
@@ -75,7 +75,7 @@ export default function WeddingInvitation() {
           onClick={openCurtain}
           style={{
             backgroundImage:
-              'url("https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=1200&fit=crop")',
+              `url("/images/AG1.jpg")`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -92,7 +92,7 @@ export default function WeddingInvitation() {
           onClick={openCurtain}
           style={{
             backgroundImage:
-              'url("https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=1200&fit=crop")',
+              `url("/images/AG2.jpg")`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -110,38 +110,65 @@ export default function WeddingInvitation() {
       <div
         className={`transition-opacity duration-[2000ms] ${curtainOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}
       >
-        {/* Welcome Section */}
-        <section className="min-h-screen flex items-center justify-center px-4 py-20">
-          <div className="text-center max-w-4xl mx-auto">
-            <div className="mb-8">
-              <Heart className="w-16 h-16 mx-auto text-rose-500 mb-6 animate-pulse" />
-              <h1 className="text-6xl md:text-8xl font-bold text-rose-800 mb-4 font-serif">¡Nos Casamos!</h1>
-              <div className="w-32 h-1 bg-gradient-to-r from-rose-400 to-pink-400 mx-auto mb-8"></div>
-            </div>
+        {/* Seccion Bienvenida */}
+      <section
+  className="relative w-full h-screen flex items-start justify-center px-4 py-10 bg-cover bg-center bg-no-repeat"
+  style={{ backgroundImage: "url('/images/AG_v2.jpg')" }}
+>
+  {/* Capa negra semitransparente */}
+  <div
+    className="absolute inset-0"
+    style={{ backgroundColor: "rgba(0,0,0,0.5)" }}
+  ></div>
 
-            <div className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed">
-              <p className="mb-4">Queridos familiares y amigos,</p>
-              <p className="mb-6">
-                Con inmensa alegría en nuestros corazones, queremos invitarte a celebrar el día más importante de
-                nuestras vidas.
-              </p>
-              <p className="text-rose-600 font-semibold">Tu presencia hará que este momento sea aún más especial.</p>
-            </div>
+  <div className="relative z-10 text-center max-w-4xl mx-auto mt-10">
+    <div className="mb-8">
+      <h1
+        className="text-7xl md:text-8xl font-bold text-white mb-4 font-serif"
+        style={{ textShadow: "2px 2px 6px rgba(0, 0, 0, 0.8)" }}
+      >
+        ¡Nos casamos!
+      </h1>
+      <h1
+        className="mt-30 text-3xl text-white font-serif italic"
+        style={{ textShadow: "1px 1px 4px rgba(0, 0, 0, 0.7)" }}
+      >
+        LUIS GERARDO RAMOS VILLALVAZO <p>&</p> NORMA ABIGAIL BARRANCO VAZQUEZ
+      </h1>
+      <div className="w-32 h-1 bg-gradient-to-r from-rose-400 to-pink-400 mx-auto mb-8"></div>
+    </div>
+  </div>
+</section>
 
-            <div className="flex flex-col md:flex-row items-center justify-center gap-8 text-lg">
-              <div className="flex items-center gap-3 bg-white/70 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg">
-                <Calendar className="w-6 h-6 text-rose-500" />
-                <span className="font-semibold">5 de Junio, 2025</span>
-              </div>
-              <div className="flex items-center gap-3 bg-white/70 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg">
-                <MapPin className="w-6 h-6 text-rose-500" />
-                <span className="font-semibold">Cancún, México</span>
-              </div>
-            </div>
-          </div>
-        </section>
 
-        {/* Countdown Section */}
+
+   <section className="relative py-24 px-6 bg-[#ece2c6]/70 backdrop-blur-md shadow-xl">
+  <div className="absolute inset-0 bg-[url('/fondo-malla.png')] bg-cover bg-center opacity-20 pointer-events-none"></div>
+
+  <div className="relative z-10 max-w-4xl mx-auto text-center">
+    <h2 className="text-5xl md:text-6xl font-serif font-bold text-rose-800 drop-shadow-lg mb-10">
+      ✨ Nos Casamos ✨
+    </h2>
+
+    <p className="text-xl md:text-2xl font-light text-gray-800 leading-relaxed mb-12">
+      Después de tantos momentos compartidos, risas infinitas y sueños que crecen juntos,
+      hemos decidido dar este gran paso. Queremos que seas parte de este capítulo tan especial en nuestras vidas.
+    </p>
+
+    <div className="mt-16 space-y-4">
+      <p className="text-3xl md:text-4xl font-semibold text-rose-900 font-cursive tracking-widest">
+        Abby y Gera
+      </p>
+      <p className="text-lg text-gray-700 italic">Con amor y emoción, te invitamos a celebrar con nosotros.</p>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+        {/* Seccion  */}
         <section className="py-20 bg-white/50 backdrop-blur-sm">
           <div className="max-w-6xl mx-auto px-4 text-center">
             <h2 className="text-4xl md:text-5xl font-bold text-rose-800 mb-4 font-serif">Cuenta Regresiva</h2>

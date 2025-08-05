@@ -2,6 +2,12 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Great_Vibes, Playfair_Display, Montserrat } from "next/font/google";
 import "./globals.css";
 
+<link
+  href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
+  rel="stylesheet"
+/>
+
+
 // Fuentes existentes
 const geistSans = Geist({
   variable: "--font-geist-sans",
