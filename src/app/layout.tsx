@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Great_Vibes, Playfair_Display, Montserrat } from "next/font/google";
 import "./globals.css";
 
+// Fuentes existentes
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -10,6 +11,25 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+// NUEVAS FUENTES para invitación
+const greatVibes = Great_Vibes({
+  variable: "--font-script",
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-serif",
+  subsets: ["latin"],
+  weight: ["700"],
+});
+
+const montserrat = Montserrat({
+  variable: "--font-sans",
+  subsets: ["latin"],
+  weight: ["400", "600"],
 });
 
 export const metadata: Metadata = {
@@ -23,12 +43,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} ${greatVibes.variable} ${playfair.variable} ${montserrat.variable}`}
+    >
+      <body className="antialiased">{children}</body>
     </html>
   );
 }
