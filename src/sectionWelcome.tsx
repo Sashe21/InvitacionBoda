@@ -9,12 +9,12 @@ export default function WeddingWelcomeSection() {
       <div className="absolute inset-0 bg-black/40"></div>
       <div className="relative z-10 text-center max-w-6xl mx-auto">
         <div className="animate-fade-in-up">
-          <div className="mb-8">
-            <Heart className="w-16 h-16 text-rose-300 mx-auto mb-6 animate-pulse drop-shadow-lg" />
+          <div className="mb-4 sm:mb-6">
+            <Heart className="w-12 h-12 sm:w-16 sm:h-16 text-rose-300 mx-auto mb-4 sm:mb-6 animate-pulse drop-shadow-lg" />
           </div>
           
           {/* Main Title with elegant typography */}
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-light text-white mb-8 tracking-wider drop-shadow-2xl">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-light text-white mb-6 md:mb-8 tracking-wider drop-shadow-2xl">
             <span className="font-extralight italic" style={{ fontFamily: 'Playfair Display, serif' }}>
               ¡Nos
             </span>
@@ -31,7 +31,7 @@ export default function WeddingWelcomeSection() {
           </div>
           
           {/* Groom's name */}
-          <h2 className="text-2xl md:text-4xl lg:text-5xl text-white mb-6 tracking-widest drop-shadow-lg">
+          <h2 className="text-lg sm:text-2xl md:text-4xl lg:text-5xl text-white mb-4 md:mb-6 tracking-widest drop-shadow-lg">
             <span 
               className="font-light uppercase letter-spacing-wide"
               style={{ 
@@ -56,7 +56,7 @@ export default function WeddingWelcomeSection() {
           {/* Elegant ampersand */}
           <div className="my-8">
             <span 
-              className="text-6xl md:text-7xl text-rose-300 drop-shadow-lg"
+              className="text-4xl sm:text-6xl md:text-7xl text-rose-300 drop-shadow-lg"
               style={{ fontFamily: 'Playfair Display, serif' }}
             >
               &
@@ -64,7 +64,7 @@ export default function WeddingWelcomeSection() {
           </div>
           
           {/* Bride's name */}
-          <h2 className="text-2xl md:text-4xl lg:text-5xl text-white mb-8 tracking-widest drop-shadow-lg">
+          <h2 className="text-lg sm:text-2xl md:text-4xl lg:text-5xl text-white mb-4 md:mb-6 tracking-widest drop-shadow-lg">
             <span 
               className="font-light uppercase"
               style={{ 
@@ -87,10 +87,10 @@ export default function WeddingWelcomeSection() {
           </h2>
           
           {/* Date with elegant styling */}
-          <div className="mt-12">
-            <div className="inline-block px-8 py-4 border border-rose-300/50 rounded-lg backdrop-blur-sm bg-white/10">
+          <div className="mt-8 md:mt-12">
+            <div className="inline-block px-4 sm:px-8 py-3 sm:py-4 border border-rose-300/50 rounded-lg backdrop-blur-sm bg-white/10">
               <p 
-                className="text-xl md:text-2xl text-rose-100 tracking-wider"
+                className="text-lg sm:text-xl md:text-2xl text-rose-100 tracking-wider"
                 style={{ fontFamily: 'Cormorant Garamond, serif' }}
               >
                 20 de Agosto, 2025

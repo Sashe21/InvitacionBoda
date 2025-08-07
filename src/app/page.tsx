@@ -6,8 +6,9 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { FaRing, FaHeart, FaCross, FaInfinity, FaCoins, FaWhatsapp } from "react-icons/fa"
 import WeddingWelcomeSection from "@/sectionWelcome"
-import LoveStorySection from "./sectionMessage"
+import LoveStorySection from "../sectionMessage"
 import "../styles/typography.css";
+import "../styles/mobile.css";
 
 export default function WeddingInvitation() {
   const [curtainOpen, setCurtainOpen] = useState(false)

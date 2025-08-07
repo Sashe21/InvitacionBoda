@@ -1,0 +1,63 @@
+/* Optimizaciones específicas para móviles */
+
+/* Mejores breakpoints personalizados */
+@media (max-width: 640px) {
+  /* Reducir animaciones en móvil para mejor rendimiento */
+  .animate-pulse {
+    animation-duration: 2s;
+  }
+  
+  /* Ajustar el espaciado de letras en móvil */
+  .tracking-widest {
+    letter-spacing: 0.1em;
+  }
+  
+  /* Mejorar legibilidad del texto en pantallas pequeñas */
+  .text-shadow-mobile {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  }
+  
+  /* Reducir blur en móvil para mejor rendimiento */
+  .backdrop-blur-md {
+    backdrop-filter: blur(8px);
+  }
+}
+
+@media (max-width: 480px) {
+  /* Para pantallas muy pequeñas */
+  .text-4xl {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+  
+  .text-3xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  
+  /* Reducir padding en pantallas muy pequeñas */
+  .p-6 {
+    padding: 1rem;
+  }
+}
+
+/* Optimización para orientación landscape en móvil */
+@media (max-height: 500px) and (orientation: landscape) {
+  .h-screen {
+    height: auto;
+    min-height: 100vh;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+/* Mejorar el contraste en pantallas móviles */
+@media (max-width: 640px) {
+  .text-white\/90 {
+    color: rgb(255 255 255 / 0.95);
+  }
+  
+  .bg-black\/40 {
+    background-color: rgb(0 0 0 / 0.5);
+  }
+}
