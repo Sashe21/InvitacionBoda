@@ -299,7 +299,7 @@ export default function WeddingInvitation() {
                     <div className="flex items-start gap-4 p-3 bg-purple-50 rounded-lg">
                       <MapPin className="w-6 h-6 text-purple-500 mt-1" />
                       <div>
-                        <span className="text-lg font-medium block">Salón de Eventos "Los Jardines"</span>
+                        <span className="text-lg font-medium block">Salón de Eventos 'Los Jardines'</span>
                         <span className="text-gray-600">Calle de la Alegría #456, Zona Norte</span>
                       </div>
                     </div>
