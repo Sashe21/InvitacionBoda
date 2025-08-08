@@ -9,6 +9,10 @@ import LetterCurtainSection from "../sectionCortina";
 import WeddingWelcomeSection from "@/sectionWelcome"
 import LoveStorySection from "../sectionMessage"
 import CountdownSection from "../sectionCount";
+import GodparentsSection from "../sectionGodparents";
+import EventsSection from "../sectionplaces";
+import ItinerarySection from "../sectionitinerary";
+
 import AdditionalInfoSection from "../sectionAdicional";
 import "../styles/typography.css";
 import "../styles/mobile.css";
@@ -170,12 +174,17 @@ export default function WeddingInvitation() {
       <WeddingWelcomeSection />
       <LoveStorySection />
       <CountdownSection />
+      <GodparentsSection />
+      <EventsSection />
+      <ItinerarySection />
+
       <AdditionalInfoSection />
+
 
       </main>
       )}
 
-        {/* Message Section */}
+        
         
 
         {/* Cut Image Section */}
@@ -186,38 +195,7 @@ export default function WeddingInvitation() {
 
        
 
-        {/* Godparents Section */}
-        <section className="relative py-24 px-6 bg-gradient-to-br from-rose-50 via-white to-pink-50">
-          <div className="max-w-7xl mx-auto text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-rose-800 font-serif mb-4">
-              Nuestros Padrinos
-            </h2>
-            <p className="text-xl text-gray-600">
-              Gracias por ser parte de nuestro gran día
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 max-w-7xl mx-auto">
-            {[
-              { name: "Juan Pérez", icon: FaHeart, role: "Padrino de honor", color: "text-rose-400" },
-              { name: "Ana Rodríguez", icon: FaRing, role: "Padrina de anillos", color: "text-yellow-500" },
-              { name: "Carlos Medina", icon: FaCross, role: "Padrino de velación", color: "text-blue-500" },
-              { name: "Laura Gómez", icon: FaInfinity, role: "Padrina de lazo", color: "text-purple-500" },
-              { name: "Pedro Hernández", icon: FaCoins, role: "Padrino de arras", color: "text-orange-500" },
-            ].map((godparent, index) => (
-              <div
-                key={index}
-                className={`bg-white rounded-3xl shadow-lg p-8 text-center hover:shadow-2xl transition-all duration-300 border border-rose-100 ${
-                  index % 2 === 0 ? 'transform -translate-y-4' : 'transform translate-y-4'
-                } hover:scale-105`}
-              >
-                <h3 className="text-xl font-semibold text-rose-700 mb-4">{godparent.name}</h3>
-                <godparent.icon className={`${godparent.color} text-4xl mx-auto mb-3`} />
-                <p className="text-sm text-gray-600 font-medium">{godparent.role}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+      
 
         {/* Event Details Section */}
         <section className="py-24 bg-gradient-to-br from-white to-rose-50">
