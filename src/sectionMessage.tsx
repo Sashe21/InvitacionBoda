@@ -63,7 +63,7 @@ export default function LoveStorySection() {
                 lineHeight: '1.8'
               }}
             >
-              Todos perdian la esperanza pero un rayo de luz les dijo ya casense y asi 
+              Todos perdian la esperanza pero un rayo de luz les dijo &quot;YA CASENSE&quot; y asi 
               empiezan esta nueva vida 
             </p>
             
