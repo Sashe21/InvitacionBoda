@@ -5,8 +5,11 @@ import { Heart, Calendar, MapPin, Music, Music2, Camera, Gift, Shirt, Phone, Mai
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { FaRing, FaHeart, FaCross, FaInfinity, FaCoins, FaWhatsapp } from "react-icons/fa"
+import LetterCurtainSection from "../sectionCortina";
 import WeddingWelcomeSection from "@/sectionWelcome"
 import LoveStorySection from "../sectionMessage"
+import CountdownSection from "../sectionCount";
+import AdditionalInfoSection from "../sectionAdicional";
 import "../styles/typography.css";
 import "../styles/mobile.css";
 
@@ -96,7 +99,9 @@ export default function WeddingInvitation() {
           {isPlaying ? "Pausar" : "Reproducir"}
         </button>
       </div>
+ 
 
+      
       {/* Curtain Effect */}
       <div className={`fixed inset-0 z-40 transition-transform duration-[2500ms] ease-in-out ${curtainOpen ? 'pointer-events-none' : ''}`}>
         {/* Left Half */}
@@ -137,7 +142,7 @@ export default function WeddingInvitation() {
                   Abby & Gera
                 </h1>
                 <p className="text-xl text-white/90 drop-shadow-md">
-                  20 de Agosto, 2025
+                  20 de Agosto, 2028
                 </p>
               </div>
               <button
@@ -155,14 +160,20 @@ export default function WeddingInvitation() {
           </div>
         )}
       </div>
+      
 
       {/* Main Content */}
       <div className={`transition-opacity duration-[2500ms] ${curtainOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
-        
+      {curtainOpen && (
       <main>
+      <LetterCurtainSection />  
       <WeddingWelcomeSection />
       <LoveStorySection />
+      <CountdownSection />
+      <AdditionalInfoSection />
+
       </main>
+      )}
 
         {/* Message Section */}
         
@@ -173,43 +184,7 @@ export default function WeddingInvitation() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/30"></div>
         </section>
 
-        {/* Countdown Section */}
-        <section className="relative py-24">
-          <div className="absolute inset-0 bg-[url('/images/Fondo3.jpg')] bg-cover bg-center"></div>
-          <div className="absolute inset-0 bg-white/70"></div>
-          <div className="relative max-w-6xl mx-auto px-4 text-center">
-            <div className="mb-12">
-              <Clock className="w-12 h-12 mx-auto text-rose-600 mb-4" />
-              <h2 className="text-4xl md:text-5xl font-bold text-rose-800 mb-6 font-serif">
-                Cuenta Regresiva
-              </h2>
-              <p className="text-xl text-gray-700">
-                ¡Faltan muy pocos días para nuestro gran momento!
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-              {[
-                { label: "Días", value: timeLeft.days },
-                { label: "Horas", value: timeLeft.hours },
-                { label: "Minutos", value: timeLeft.minutes },
-                { label: "Segundos", value: timeLeft.seconds },
-              ].map((item, index) => (
-                <div
-                  key={index}
-                  className="bg-white/95 backdrop-blur-sm rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 p-8 border border-rose-200 hover:scale-105"
-                >
-                  <div className="text-4xl md:text-6xl font-extrabold text-rose-700 mb-3">
-                    {item.value.toString().padStart(2, "0")}
-                  </div>
-                  <div className="text-sm md:text-lg text-rose-600 font-semibold uppercase tracking-wider">
-                    {item.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+       
 
         {/* Godparents Section */}
         <section className="relative py-24 px-6 bg-gradient-to-br from-rose-50 via-white to-pink-50">
@@ -421,7 +396,7 @@ export default function WeddingInvitation() {
               <div className="mt-8 p-4 bg-rose-50 rounded-xl">
                 <p className="text-sm text-gray-600">
                   <Phone className="w-4 h-4 inline mr-2" />
-                  Para dudas: +52 55 1234-5678
+                  Para dudas: +52 341 134 8420
                 </p>
               </div>
             </div>

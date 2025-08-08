@@ -30,11 +30,11 @@ export default function LoveStorySection() {
               className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-rose-800 mb-4 tracking-wide"
               style={{ fontFamily: 'Playfair Display, serif' }}
             >
-              <span className="italic font-extralight">Una</span>
-              <span className="mx-2 sm:mx-4 font-normal">Historia</span>
+              <span className="italic font-extralight">Porfin</span>
+              <span className="mx-2 sm:mx-4 font-normal">Se nos</span>
               <br />
-              <span className="italic font-extralight">de</span>
-              <span className="ml-2 sm:ml-4 font-normal">Amor</span>
+              <span className="italic font-extralight">Casan</span>
+              <span className="ml-2 sm:ml-4 font-normal">siiiii</span>
             </h2>
             
             {/* Decorative flourish */}
@@ -63,15 +63,15 @@ export default function LoveStorySection() {
                 lineHeight: '1.8'
               }}
             >
-              Después de tantos momentos compartidos, risas infinitas y sueños que crecen juntos,
-              hemos decidido dar este gran paso.
+              Todos perdian la esperanza pero un rayo de luz les dijo ya casense y asi 
+              empiezan esta nueva vida 
             </p>
             
             <p 
               className="text-lg md:text-xl text-gray-600 font-light italic leading-relaxed"
               style={{ fontFamily: 'Cormorant Garamond, serif' }}
             >
-              Queremos que seas parte de este capítulo tan especial en nuestras vidas.
+              Queremos que seas parte de este capítulo tan especial.
             </p>
           </div>
           
@@ -113,7 +113,7 @@ export default function LoveStorySection() {
                 className="text-lg md:text-xl text-gray-600 italic font-light"
                 style={{ fontFamily: 'Cormorant Garamond, serif' }}
               >
-                Con amor y emoción, te invitamos a celebrar con nosotros.
+                Con amor y emoción, te invitamos al pachangon que se armara en la playa.
               </p>
             </div>
           </div>
