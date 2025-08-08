@@ -221,7 +221,7 @@ export default function AdditionalInfoSection() {
                     Recepción
                   </h4>
                   <p className="text-gray-600 text-sm mb-2">
-                    Salón de Eventos "Los Jardines"<br />
+                    Salón de Eventos &quot;Los Jardines&quot;<br />
                     Blvd. de las Rosas #456, Zona Norte
                   </p>
                   <p className="text-rose-600 text-sm font-medium mb-3">7:00 PM</p>
