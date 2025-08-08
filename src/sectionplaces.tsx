@@ -134,7 +134,7 @@ export default function EventsSection() {
                   className="text-base sm:text-lg font-light"
                   style={{ fontFamily: 'Cormorant Garamond, serif' }}
                 >
-                  Salón de Eventos "Los Jardines"<br />
+                  Salón de Eventos Los Jardines<br />
                   Blvd. de las Rosas #456, Zona Norte
                 </p>
               </div>
