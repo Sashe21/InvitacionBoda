@@ -63,13 +63,13 @@ export default function WeddingInvitation() {
 
   const handleRSVP = () => {
     const message = "¡Hola! Confirmo mi asistencia a la boda de Abby y Gera el 20 de agosto de 2025. ¡No me la perdería por nada!"
-    const whatsappUrl = `https://wa.me/5215512345678?text=${encodeURIComponent(message)}`
+    const whatsappUrl = `https://wa.me/523411348420?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, '_blank')
   }
 
   const handleMessage = () => {
     const message = "¡Hola Abby y Gera! Felicidades por su boda. Quería enviarles mis mejores deseos para este día tan especial."
-    const whatsappUrl = `https://wa.me/5215512345678?text=${encodeURIComponent(message)}`
+    const whatsappUrl = `https://wa.me/523411348420?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, '_blank')
   }
 
