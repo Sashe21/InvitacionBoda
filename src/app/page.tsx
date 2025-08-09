@@ -12,6 +12,7 @@ import CountdownSection from "../sectionCount";
 import GodparentsSection from "../sectionGodparents";
 import EventsSection from "../sectionplaces";
 import ItinerarySection from "../sectionitinerary";
+import PhotoGallerySection from "../sectionGalery"
 
 import AdditionalInfoSection from "../sectionAdicional";
 import "../styles/typography.css";
@@ -177,6 +178,7 @@ export default function WeddingInvitation() {
       <GodparentsSection />
       <EventsSection />
       <ItinerarySection />
+      <PhotoGallerySection />
 
       <AdditionalInfoSection />
 
@@ -196,74 +198,6 @@ export default function WeddingInvitation() {
        
 
       
-
-        {/* Event Details Section */}
-        <section className="py-24 bg-gradient-to-br from-white to-rose-50">
-          <div className="max-w-6xl mx-auto px-4">
-            <h2 className="text-4xl md:text-5xl font-bold text-rose-800 mb-16 text-center font-serif">
-              Detalles del Evento
-            </h2>
-            
-            <div className="grid md:grid-cols-2 gap-12">
-              <Card className="bg-white/90 backdrop-blur-sm border-rose-200 shadow-2xl hover:shadow-3xl transition-all duration-300 overflow-hidden group">
-                <CardContent className="p-10">
-                  <div className="text-center mb-8">
-                    <div className="w-20 h-20 bg-gradient-to-br from-rose-400 to-pink-400 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                      <Heart className="w-10 h-10 text-white" />
-                    </div>
-                    <h3 className="text-3xl font-bold text-rose-800 mb-2">Ceremonia Religiosa</h3>
-                  </div>
-                  <div className="space-y-6 text-gray-700">
-                    <div className="flex items-center gap-4 p-3 bg-rose-50 rounded-lg">
-                      <Calendar className="w-6 h-6 text-rose-500" />
-                      <span className="text-lg font-medium">20 de Agosto, 2025</span>
-                    </div>
-                    <div className="flex items-center gap-4 p-3 bg-rose-50 rounded-lg">
-                      <Clock className="w-6 h-6 text-rose-500" />
-                      <span className="text-lg font-medium">17:00 hrs</span>
-                    </div>
-                    <div className="flex items-start gap-4 p-3 bg-rose-50 rounded-lg">
-                      <MapPin className="w-6 h-6 text-rose-500 mt-1" />
-                      <div>
-                        <span className="text-lg font-medium block">Iglesia San José</span>
-                        <span className="text-gray-600">Av. Principal #123, Centro</span>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-white/90 backdrop-blur-sm border-rose-200 shadow-2xl hover:shadow-3xl transition-all duration-300 overflow-hidden group">
-                <CardContent className="p-10">
-                  <div className="text-center mb-8">
-                    <div className="w-20 h-20 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                      <span className="text-3xl">🎉</span>
-                    </div>
-                    <h3 className="text-3xl font-bold text-rose-800 mb-2">Recepción</h3>
-                  </div>
-                  <div className="space-y-6 text-gray-700">
-                    <div className="flex items-center gap-4 p-3 bg-purple-50 rounded-lg">
-                      <Calendar className="w-6 h-6 text-purple-500" />
-                      <span className="text-lg font-medium">20 de Agosto, 2025</span>
-                    </div>
-                    <div className="flex items-center gap-4 p-3 bg-purple-50 rounded-lg">
-                      <Clock className="w-6 h-6 text-purple-500" />
-                      <span className="text-lg font-medium">19:00 hrs</span>
-                    </div>
-                    <div className="flex items-start gap-4 p-3 bg-purple-50 rounded-lg">
-                      <MapPin className="w-6 h-6 text-purple-500 mt-1" />
-                      <div>
-                        <span className="text-lg font-medium block">Salón de Eventos &aposLos Jardines$apos</span>
-                        <span className="text-gray-600">Calle de la Alegría #456, Zona Norte</span>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </section>
-
         {/* Dress Code & Gifts Section */}
         <section className="py-24 bg-gradient-to-br from-rose-50 to-pink-100">
           <div className="max-w-6xl mx-auto px-4">
@@ -303,42 +237,7 @@ export default function WeddingInvitation() {
           </div>
         </section>
 
-        {/* Photo Gallery Section */}
-        <section className="py-24 bg-white">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-16">
-              <Camera className="w-12 h-12 mx-auto text-rose-500 mb-4" />
-              <h2 className="text-4xl md:text-5xl font-bold text-rose-800 mb-4 font-serif">
-                Galería de Recuerdos
-              </h2>
-              <p className="text-xl text-gray-600">
-                Momentos especiales que queremos compartir contigo
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {galleryImages.map((src, index) => (
-                <div
-                  key={index}
-                  className="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer"
-                >
-                  <img
-                    src={src || "/placeholder.svg"}
-                    alt={`Recuerdo ${index + 1}`}
-                    className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className="absolute bottom-6 left-6 text-white">
-                      <p className="text-lg font-medium">Momento especial</p>
-                      <p className="text-sm opacity-80">Abby & Gera</p>
-                    </div>
-                  </div>
-                  <div className="absolute inset-0 ring-4 ring-white/30 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        
 
         {/* RSVP Section */}
         <section className="py-24 bg-gradient-to-br from-rose-100 to-pink-100">
