@@ -30,7 +30,7 @@ export default function LetterCurtainSection() {
   <div className="absolute inset-0 bg-black/50"></div>
 
   {/* Decorative border */}
-  <div className="absolute right-0 top-0 h-full w-1 bg-gradient-to-b from-rose-300/50 via-white/30 to-rose-300/50"></div>
+
 
   {/* Vintage paper texture overlay */}
   <div className="absolute inset-0 bg-gradient-to-br from-amber-50/10 via-transparent to-rose-100/10"></div>
@@ -52,7 +52,7 @@ export default function LetterCurtainSection() {
   <div className="absolute inset-0 bg-black/50"></div>
 
   {/* Decorative border */}
-  <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-rose-300/50 via-white/30 to-rose-300/50"></div>
+
 
   {/* Vintage paper texture overlay */}
   <div className="absolute inset-0 bg-gradient-to-bl from-amber-50/10 via-transparent to-rose-100/10"></div>
@@ -74,12 +74,6 @@ export default function LetterCurtainSection() {
                 <span className="mx-4 text-rose-300">&</span>
                 <span className="italic font-extralight">Gera</span>
               </h1>
-              <p 
-                className="text-lg md:text-xl text-white/90 drop-shadow-lg tracking-wider"
-                style={{ fontFamily: 'Cormorant Garamond, serif' }}
-              >
-                20 de Agosto, 2025
-              </p>
             </div>
 
             {/* Wax Seal Style Button */}
@@ -88,40 +82,38 @@ export default function LetterCurtainSection() {
               <div className="absolute inset-0 rounded-full bg-rose-400/30 blur-xl scale-150 animate-pulse"></div>
               
               {/* Main seal button */}
-              <button
-                onClick={openCurtain}
-                className="group relative w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-rose-400 via-rose-500 to-rose-600 shadow-2xl hover:shadow-rose-500/50 transition-all duration-500 hover:scale-110 border-4 border-white/20 backdrop-blur-sm"
-              >
-                {/* Inner circle with texture */}
-                <div className="absolute inset-2 rounded-full bg-gradient-to-br from-rose-300/50 to-rose-700/50 border-2 border-white/30"></div>
-                
-                {/* Initials */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span 
-                    className="text-4xl md:text-5xl font-bold text-white drop-shadow-lg tracking-wider"
-                    style={{ fontFamily: 'Playfair Display, serif' }}
-                  >
-                    AG
-                  </span>
-                </div>
-                
-                {/* Decorative elements around the seal */}
-                <div className="absolute -top-2 left-1/2 transform -translate-x-1/2">
-                  <div className="w-2 h-2 bg-white/60 rounded-full"></div>
-                </div>
-                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
-                  <div className="w-2 h-2 bg-white/60 rounded-full"></div>
-                </div>
-                <div className="absolute -left-2 top-1/2 transform -translate-y-1/2">
-                  <div className="w-2 h-2 bg-white/60 rounded-full"></div>
-                </div>
-                <div className="absolute -right-2 top-1/2 transform -translate-y-1/2">
-                  <div className="w-2 h-2 bg-white/60 rounded-full"></div>
-                </div>
-                
-                {/* Hover effect overlay */}
-                <div className="absolute inset-0 rounded-full bg-white/0 group-hover:bg-white/20 transition-all duration-300"></div>
-              </button>
+             {/* Outer glow effect (beige difuminado) */}
+<div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#e4e1d8]/40 via-[#f5f3ec]/30 to-[#d9d4c5]/40 blur-xl scale-150 animate-pulse"></div>
+
+{/* Main seal button */}
+<button
+  onClick={openCurtain}
+  className="group relative w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-[#e4e1d8] via-[#f5f3ec] to-[#d9d4c5] shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-110 border-4 border-[#e4e1d8]/70 backdrop-blur-sm"
+>
+  {/* Inner circle beige más claro */}
+  <div className="absolute inset-3 rounded-full bg-[#faf9f5] border-2 border-[#d9d4c5]/60"></div>
+
+  {/* Initials */}
+  <div className="absolute inset-0 flex flex-col items-center justify-center">
+  
+   <span 
+  className="text-4xl md:text-5xl lg:text-6xl font-semibold text-[#a08c6a] mb-4 drop-shadow-2xl tracking-wide italic"
+  style={{ fontFamily: "'Playfair Display', serif", fontStyle: 'italic' }}
+>
+  AG
+</span>
+
+   
+  </div>
+
+  {/* Hover effect overlay */}
+  <div className="absolute inset-0 rounded-full bg-white/0 group-hover:bg-white/20 transition-all duration-300"></div>
+</button>
+
+
+ 
+
+
               
               {/* Instruction text */}
               <p 
