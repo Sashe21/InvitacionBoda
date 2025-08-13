@@ -25,7 +25,7 @@ export default function SectionMessage() {
                 color: "#1a385f",
               }}
             >
-              Entre olas, arena y atardeceres, queremos que sean testigos de nuestro 'sí, acepto'.
+              Entre olas, arena y atardeceres, queremos que sean testigos de nuestro &apos;sí, acepto&apos;.
             </p>
 
             <p
