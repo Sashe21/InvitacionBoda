@@ -18,6 +18,7 @@ import SectionImagen from "../sectionImage";
 import SectionMoreInfo from "../sectionMoreInfo";
 import SectionHosting from "../sectionHosting"
 import SectionRSVP from "../sectionRSVP"
+import SectionFooter from "../sectionFooter"
 
 import AdditionalInfoSection from "../sectionAdicional";
 import "../styles/typography.css";
@@ -130,70 +131,11 @@ export default function WeddingInvitation() {
         <SectionMoreInfo />
         <SectionHosting />
         <SectionRSVP />
+        <SectionFooter />
         
         {/*<AdditionalInfoSection />*/}
       
       </main>
-  
-        {/* RSVP Section */}
-        <section className="py-24 bg-gradient-to-br from-rose-100 to-pink-100">
-          <div className="max-w-4xl mx-auto px-4 text-center">
-            <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-12 shadow-2xl border border-rose-200">
-              <Heart className="w-16 h-16 mx-auto text-rose-500 mb-6 animate-pulse" />
-              <h2 className="text-4xl md:text-5xl font-bold text-rose-800 mb-8 font-serif">
-                Confirma tu Asistencia
-              </h2>
-              <p className="text-xl text-gray-600 mb-12 leading-relaxed">
-                Tu presencia es el regalo más importante para nosotros. Por favor, confirma tu asistencia 
-                antes del <strong>15 de agosto</strong>.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <Button 
-                  onClick={handleRSVP}
-                  className="bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white px-10 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-3"
-                >
-                  <FaWhatsapp className="w-5 h-5" />
-                  Confirmar Asistencia
-                </Button>
-                <Button
-                  onClick={handleMessage}
-                  variant="outline"
-                  className="border-2 border-rose-300 text-rose-600 hover:bg-rose-50 px-10 py-4 text-lg rounded-full hover:border-rose-400 transition-all duration-300 flex items-center gap-3"
-                >
-                  <Mail className="w-5 h-5" />
-                  Enviar Mensaje
-                </Button>
-              </div>
-              
-              <div className="mt-8 p-4 bg-rose-50 rounded-xl">
-                <p className="text-sm text-gray-600">
-                  <Phone className="w-4 h-4 inline mr-2" />
-                  Para dudas: +52 341 134 8420
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Footer */}
-        <footer className="py-16 bg-gradient-to-r from-rose-800 via-pink-800 to-rose-800 text-white text-center relative overflow-hidden">
-          <div className="absolute inset-0 bg-black/20"></div>
-          <div className="relative z-10 max-w-4xl mx-auto px-4">
-            <div className="flex justify-center gap-4 mb-6">
-              <Heart className="w-8 h-8 animate-pulse" />
-              <Heart className="w-10 h-10 animate-pulse" style={{ animationDelay: '0.5s' }} />
-              <Heart className="w-8 h-8 animate-pulse" style={{ animationDelay: '1s' }} />
-            </div>
-            <p className="text-xl mb-4">Con todo nuestro amor</p>
-            <p className="text-4xl font-bold font-serif mb-2">Abby & Gera</p>
-            <div className="w-24 h-1 bg-white/50 mx-auto mb-4"></div>
-            <p className="text-lg opacity-90">20 de Agosto, 2025</p>
-            <p className="text-sm mt-2 opacity-80">
-              Luis Gerardo Ramos Villalvazo & Norma Abigail Barranco Vazquez
-            </p>
-          </div>
-        </footer>
       </div>
     
   )

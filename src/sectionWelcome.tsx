@@ -4,7 +4,7 @@ export default function WeddingWelcomeSection() {
   return (
     <section
       className="relative w-full min-h-screen min-h-dvh flex items-center justify-center px-4 py-8 sm:py-12 bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/images/AG_v2.jpg')" }}
+      style={{ backgroundImage: "url('/images/AGCount.jpg')" }}
     >
       <div className="absolute inset-0 bg-black/40"></div>
       <div className="relative z-10 text-center w-full max-w-4xl mx-auto">

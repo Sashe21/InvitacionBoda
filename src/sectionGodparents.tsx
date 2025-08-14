@@ -108,7 +108,7 @@ export default function GodparentsSection() {
                   >
                     Felipe de Jesus Ramos Bernabé
                   </p>
-                  <p className="text-sm text-gray-600 italic">Padre</p>
+
                 </div>
 
                 <div className="flex items-center justify-center my-3">
@@ -126,7 +126,7 @@ export default function GodparentsSection() {
                   >
                     María Francisca Villalvazo Villalvazo
                   </p>
-                  <p className="text-sm text-gray-600 italic">Madre</p>
+             
                 </div>
               </div>
             </div>
@@ -151,7 +151,7 @@ export default function GodparentsSection() {
                   >
                     Moises Barranco Bernardino
                   </p>
-                  <p className="text-sm text-gray-600 italic">Padre</p>
+                
                 </div>
 
                 <div className="flex items-center justify-center my-3">
@@ -169,7 +169,7 @@ export default function GodparentsSection() {
                   >
                     Norma Lorena Vazquez Leal
                   </p>
-                  <p className="text-sm text-gray-600 italic">Madre</p>
+              
                 </div>
               </div>
             </div>
@@ -204,7 +204,7 @@ export default function GodparentsSection() {
             </div>
 
             <p
-              className="text-base sm:text-lg text-gray-600 italic font-light max-w-2xl mx-auto"
+              className="text-3xl text-gray-600 italic font-light max-w-2xl mx-auto"
               style={{ fontFamily: "Cormorant Garamond, serif" }}
             >
               Gracias por ser parte de nuestro gran día y acompañarnos en este momento tan especial
@@ -235,12 +235,12 @@ export default function GodparentsSection() {
                         <span className="text-center">{name.trim()}</span>
                         {nameIndex === 0 && (
                           <div className="flex items-center justify-center my-2">
-                            <div className="w-4 h-px" style={{ backgroundColor: "#1a385f" }}></div>
+
                             <span className="mx-2 font-normal" style={{ color: "#1a385f" }}>
                               {" "}
                               &{" "}
                             </span>
-                            <div className="w-4 h-px" style={{ backgroundColor: "#1a385f" }}></div>
+
                           </div>
                         )}
                       </div>

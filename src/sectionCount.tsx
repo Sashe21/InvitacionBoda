@@ -46,9 +46,10 @@ export default function CountdownSection() {
 
   return (
     <section
-      className="relative py-8 sm:py-10 md:py-12 mx-4 border-[#1a385f]/10"
-      style={{ backgroundColor: "#fffaef" }}
+      className="relative w-full min-h-screen min-h-dvh flex items-center justify-center px-4 py-8 sm:py-12 bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/images/AG_v2.jpg')" }}
     >
+        
       <div className="relative max-w-6xl mx-auto px-4 text-center">
         {/* Wedding Date with Decorative Lines */}
         <div className="mb-6 sm:mb-8">
@@ -71,11 +72,12 @@ export default function CountdownSection() {
         {/* "Falta" Text */}
         <div className="mb-4 sm:mb-6">
           <h3
-            className="text-2xl sm:text-3xl md:text-4xl font-light italic"
-            style={{ fontFamily: "Cormorant Garamond, serif", color: "#1a385f" }}
-          >
-            Falta...
-          </h3>
+  className="text-2xl sm:text-3xl md:text-4xl font-bold italic"
+  style={{ fontFamily: "Cormorant Garamond, serif", color: "#FFFFFF" }}
+>
+  Faltan...
+</h3>
+
           <div className="flex justify-center mt-4">
             <svg width="80" height="12" viewBox="0 0 80 12" className="text-[#1a385f] opacity-60">
               <path d="M10 6 Q25 2, 40 6 T70 6" stroke="currentColor" strokeWidth="1" fill="none" />
