@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Send, Check, X, User, MessageSquare, AlertCircle } from "lucide-react"
 
 export default function SectionRSVP() {
@@ -15,6 +15,23 @@ export default function SectionRSVP() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [error, setError] = useState("")
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.2 },
+    )
+
+    const section = document.getElementById("rsvp-section")
+    if (section) observer.observe(section)
+
+    return () => observer.disconnect()
+  }, [])
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -91,36 +108,46 @@ export default function SectionRSVP() {
 
   return (
     <section
+      id="rsvp-section"
       className="pt-0 pb-8 sm:pb-12 md:pb-16 px-3 sm:px-4 md:px-6 lg:px-8"
       style={{ backgroundColor: "#fffaef" }}
     >
       <div className="max-w-xs sm:max-w-lg md:max-w-2xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-6 sm:mb-8 md:mb-12">
+        <div
+          className={`text-center mb-6 sm:mb-8 md:mb-12 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+        >
           <div className="flex items-center justify-center mb-4 sm:mb-6">
             <div className="h-px bg-gradient-to-r from-transparent via-[#1a385f] to-transparent flex-1"></div>
-            <div className="mx-3 sm:mx-4 md:mx-6 p-2 sm:p-3 rounded-full" style={{ backgroundColor: "#1a385f" }}>
+            <div
+              className={`mx-3 sm:mx-4 md:mx-6 p-2 sm:p-3 rounded-full transition-all duration-700 delay-300 ${isVisible ? "scale-100 rotate-0" : "scale-75 rotate-45"}`}
+              style={{ backgroundColor: "#1a385f" }}
+            >
               <Send className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#fffaef]" />
             </div>
             <div className="h-px bg-gradient-to-r from-transparent via-[#1a385f] to-transparent flex-1"></div>
           </div>
 
           <h2
-            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 font-serif px-2"
+            className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 font-brandley px-2 transition-all duration-1000 delay-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
             style={{ color: "#1a385f" }}
           >
             Confirmación de Asistencia
           </h2>
-          <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed max-w-xs sm:max-w-sm md:max-w-lg mx-auto px-2 sm:px-4">
+          <p
+            className={`text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed max-w-xs sm:max-w-sm md:max-w-lg mx-auto px-2 sm:px-4 transition-all duration-1000 delay-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+          >
             Por favor confirma tu asistencia a nuestra boda. Tu presencia es muy importante para nosotros.
           </p>
         </div>
 
         {/* Form */}
-        <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg sm:shadow-xl p-4 sm:p-6 md:p-8 lg:p-10 border border-gray-100">
+        <div
+          className={`bg-white rounded-xl sm:rounded-2xl shadow-lg sm:shadow-xl p-4 sm:p-6 md:p-8 lg:p-10 border border-gray-100 transition-all duration-1000 delay-900 hover:shadow-2xl ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+        >
           {isSubmitted ? (
-            <div className="text-center py-6 sm:py-8">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+            <div className="text-center py-6 sm:py-8 animate-in fade-in duration-500">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 animate-bounce">
                 <Check className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-green-600" />
               </div>
               <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-green-600 mb-2">¡Confirmación Recibida!</h3>
@@ -132,7 +159,7 @@ export default function SectionRSVP() {
             <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 md:space-y-8">
               {/* Error Message */}
               {error && (
-                <div className="bg-red-50 border border-red-200 rounded-lg p-3 sm:p-4 flex items-start space-x-2 sm:space-x-3">
+                <div className="bg-red-50 border border-red-200 rounded-lg p-3 sm:p-4 flex items-start space-x-2 sm:space-x-3 animate-in slide-in-from-top duration-300">
                   <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 text-red-500 flex-shrink-0 mt-0.5" />
                   <p className="text-red-700 text-xs sm:text-sm">{error}</p>
                 </div>
@@ -150,7 +177,7 @@ export default function SectionRSVP() {
                   name="name1"
                   value={formData.name1}
                   onChange={handleInputChange}
-                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 rounded-lg focus:border-[#1a385f] focus:outline-none transition-colors text-gray-800 placeholder-gray-400 text-sm sm:text-base"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 rounded-lg focus:border-[#1a385f] focus:outline-none focus:ring-2 focus:ring-[#1a385f]/20 transition-all duration-300 text-gray-800 placeholder-gray-400 text-sm sm:text-base hover:border-gray-300 transform focus:scale-[1.02]"
                   placeholder="Primer nombre completo"
                 />
 
@@ -160,7 +187,7 @@ export default function SectionRSVP() {
                   name="name2"
                   value={formData.name2}
                   onChange={handleInputChange}
-                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 rounded-lg focus:border-[#1a385f] focus:outline-none transition-colors text-gray-800 placeholder-gray-400 text-sm sm:text-base"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 rounded-lg focus:border-[#1a385f] focus:outline-none focus:ring-2 focus:ring-[#1a385f]/20 transition-all duration-300 text-gray-800 placeholder-gray-400 text-sm sm:text-base hover:border-gray-300 transform focus:scale-[1.02]"
                   placeholder="Segundo nombre completo (opcional)"
                 />
 
@@ -170,7 +197,7 @@ export default function SectionRSVP() {
                   name="name3"
                   value={formData.name3}
                   onChange={handleInputChange}
-                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 rounded-lg focus:border-[#1a385f] focus:outline-none transition-colors text-gray-800 placeholder-gray-400 text-sm sm:text-base"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 rounded-lg focus:border-[#1a385f] focus:outline-none focus:ring-2 focus:ring-[#1a385f]/20 transition-all duration-300 text-gray-800 placeholder-gray-400 text-sm sm:text-base hover:border-gray-300 transform focus:scale-[1.02]"
                   placeholder="Tercer nombre completo (opcional)"
                 />
               </div>
@@ -184,10 +211,10 @@ export default function SectionRSVP() {
                   <button
                     type="button"
                     onClick={() => handleAttendanceChange("yes")}
-                    className={`p-3 sm:p-4 rounded-lg border-2 transition-all duration-200 flex items-center justify-center space-x-1 sm:space-x-2 text-sm sm:text-base ${
+                    className={`p-3 sm:p-4 rounded-lg border-2 transition-all duration-300 flex items-center justify-center space-x-1 sm:space-x-2 text-sm sm:text-base transform hover:scale-105 active:scale-95 ${
                       formData.attendance === "yes"
-                        ? "border-green-500 bg-green-50 text-green-700 shadow-md"
-                        : "border-gray-200 hover:border-green-300 text-gray-600 hover:bg-green-50"
+                        ? "border-green-500 bg-green-50 text-green-700 shadow-lg scale-105"
+                        : "border-gray-200 hover:border-green-300 text-gray-600 hover:bg-green-50 hover:shadow-md"
                     }`}
                   >
                     <Check className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -197,10 +224,10 @@ export default function SectionRSVP() {
                   <button
                     type="button"
                     onClick={() => handleAttendanceChange("no")}
-                    className={`p-3 sm:p-4 rounded-lg border-2 transition-all duration-200 flex items-center justify-center space-x-1 sm:space-x-2 text-sm sm:text-base ${
+                    className={`p-3 sm:p-4 rounded-lg border-2 transition-all duration-300 flex items-center justify-center space-x-1 sm:space-x-2 text-sm sm:text-base transform hover:scale-105 active:scale-95 ${
                       formData.attendance === "no"
-                        ? "border-red-500 bg-red-50 text-red-700 shadow-md"
-                        : "border-gray-200 hover:border-red-300 text-gray-600 hover:bg-red-50"
+                        ? "border-red-500 bg-red-50 text-red-700 shadow-lg scale-105"
+                        : "border-gray-200 hover:border-red-300 text-gray-600 hover:bg-red-50 hover:shadow-md"
                     }`}
                   >
                     <X className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -226,7 +253,7 @@ export default function SectionRSVP() {
                   onChange={handleInputChange}
                   rows={3}
                   maxLength={500}
-                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 rounded-lg focus:border-[#1a385f] focus:outline-none transition-colors text-gray-800 placeholder-gray-400 resize-none text-sm sm:text-base"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 rounded-lg focus:border-[#1a385f] focus:outline-none focus:ring-2 focus:ring-[#1a385f]/20 transition-all duration-300 text-gray-800 placeholder-gray-400 resize-none text-sm sm:text-base hover:border-gray-300 transform focus:scale-[1.02]"
                   placeholder="Déjanos un mensaje especial... (máximo 500 caracteres)"
                 />
                 <div className="text-right text-xs text-gray-500 mt-1">{formData.message.length}/500</div>
@@ -236,9 +263,9 @@ export default function SectionRSVP() {
               <button
                 type="submit"
                 disabled={!isFormValid || isSubmitting}
-                className={`w-full py-3 sm:py-4 px-4 sm:px-6 rounded-lg font-semibold text-white transition-all duration-200 flex items-center justify-center space-x-1 sm:space-x-2 text-sm sm:text-base ${
+                className={`w-full py-3 sm:py-4 px-4 sm:px-6 rounded-lg font-semibold text-white transition-all duration-300 flex items-center justify-center space-x-1 sm:space-x-2 text-sm sm:text-base transform ${
                   isFormValid && !isSubmitting
-                    ? "bg-[#1a385f] hover:bg-[#2a4a6f] shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                    ? "bg-[#1a385f] hover:bg-[#2a4a6f] shadow-lg hover:shadow-xl hover:-translate-y-1 hover:scale-105 active:scale-95"
                     : "bg-gray-300 cursor-not-allowed"
                 }`}
               >
@@ -261,12 +288,14 @@ export default function SectionRSVP() {
         </div>
 
         {/* Footer Note */}
-        <div className="text-center mt-4 sm:mt-6 md:mt-8">
+        <div
+          className={`text-center mt-4 sm:mt-6 md:mt-8 transition-all duration-1000 delay-1100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+        >
           <p className="text-xs sm:text-sm text-gray-600 px-2 sm:px-4">
             Si tienes alguna pregunta o problema, contáctanos al{" "}
             <a
               href="tel:341-134-8420"
-              className="font-semibold hover:underline transition-colors"
+              className="font-semibold hover:underline transition-all duration-300 hover:scale-105 inline-block"
               style={{ color: "#1a385f" }}
             >
               341-134-8420
