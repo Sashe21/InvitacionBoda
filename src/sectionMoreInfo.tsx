@@ -51,8 +51,8 @@ export default function SectionMoreInfo() {
                 </p>
                 <div className="flex justify-center space-x-4">
                   <div className="text-center">
-                    <div className="w-8 h-8 rounded-full mx-auto mb-1 bg-blue-500"></div>
-                    <span className="text-xs" style={{ color: "#27BEF5" }}>
+                    <div className="w-8 h-8 rounded-full mx-auto mb-1 bg-blue-900"></div>
+                    <span className="text-xs" style={{ color: "#1a385f" }}>
                       Azul
                     </span>
                   </div>
@@ -132,7 +132,7 @@ export default function SectionMoreInfo() {
                     </span>
                   </div>
                   <div className="text-center">
-                    <div className="w-8 h-8 rounded-full mx-auto mb-1 bg-blue-700"></div>
+                    <div className="w-8 h-8 rounded-full mx-auto mb-1 bg-blue-900"></div>
                     <span className="text-xs" style={{ color: "#1a385f" }}>
                       Azul Rey
                     </span>

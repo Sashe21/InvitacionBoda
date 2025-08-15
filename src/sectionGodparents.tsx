@@ -1,46 +1,77 @@
-import { Infinity, Coins, Users, Crown, BookOpen, BellRingIcon as Rings } from "lucide-react"
+"use client"
+
+import { useEffect, useRef, useState } from "react"
 
 export default function GodparentsSection() {
+  const [isVisible, setIsVisible] = useState(false)
+  const [parentsVisible, setParentsVisible] = useState(false)
+  const sectionRef = useRef<HTMLDivElement>(null)
+
   const godparents = [
     {
       name: "Yurith Zepeda Martinez & Damian Barranco Bernardino",
-      icon: Rings,
+      iconPath: "/icons/anillos.svg", // Using external SVG file path
       role: "Padrinos de Anillos",
       color: "text-blue-800",
       bgColor: "from-blue-50 to-indigo-50",
     },
     {
       name: "Candelaria Bernardino Guzman & Lazaro Barranco Benitez",
-      icon: Infinity,
+      iconPath: "/icons/lazo.svg", // Using external SVG file path
       role: "Padrinos de Lazo",
       color: "text-blue-700",
       bgColor: "from-blue-100 to-slate-50",
     },
     {
       name: "Mariana Romero Zepeda & David Navarro Reyes",
-      icon: Coins,
+      iconPath: "/icons/arras.svg", // Using external SVG file path
       role: "Padrinos de Arras",
       color: "text-blue-900",
       bgColor: "from-slate-100 to-blue-50",
     },
     {
       name: "Mariela Areli Rivas Vargas & Sebastian Andres Hernandez Flores",
-      icon: BookOpen,
+      iconPath: "/icons/biblia.svg", // Using external SVG file path
       role: "Padrinos de Biblia",
       color: "text-blue-800",
       bgColor: "from-indigo-50 to-blue-50",
     },
     {
       name: "Lenia Priscila Rivas Vargas & Wiliam Grajeda",
-      icon: Crown,
+      iconPath: "/icons/cojin.svg", // Using external SVG file path
       role: "Padrinos de Cojines",
       color: "text-blue-700",
       bgColor: "from-blue-50 to-slate-50",
     },
   ]
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setParentsVisible(true)
+          setTimeout(() => setIsVisible(true), 150)
+        }
+      },
+      {
+        threshold: 0.05,
+        rootMargin: "50px 0px -50px 0px",
+      },
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <section className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6" style={{ backgroundColor: "#fffaef" }}>
+    <section
+      ref={sectionRef}
+      className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6"
+      style={{ backgroundColor: "#fffaef" }}
+    >
       {/* Decorative background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <svg className="absolute top-1/4 left-0 w-full h-full opacity-10" viewBox="0 0 1000 800">
@@ -66,19 +97,32 @@ export default function GodparentsSection() {
         <div className="mb-16 sm:mb-20">
           {/* Parents Header */}
           <div className="text-center mb-10 sm:mb-12">
-            <div className="flex justify-center mb-4">
-              <Users className="w-8 h-8 sm:w-10 sm:h-10" style={{ color: "#1a385f" }} />
-            </div>
+            
 
             <h2
-              className="text-2xl sm:text-3xl md:text-4xl font-light mb-4 tracking-wide"
-              style={{ fontFamily: "Playfair Display, serif", color: "#1a385f" }}
+              className={`text-2xl sm:text-3xl md:text-4xl font-light mb-4 tracking-wide transition-all duration-1000 ${
+                parentsVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+              }`}
+              style={{
+                fontFamily: "Playfair Display, serif",
+                color: "#1a385f",
+                transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+                transitionDelay: "200ms",
+              }}
             >
               <span className="italic font-extralight">Nuestros</span>
               <span className="ml-3 font-normal">Padres</span>
             </h2>
 
-            <div className="flex justify-center">
+            <div
+              className={`flex justify-center transition-all duration-1000 ${
+                parentsVisible ? "scale-100 opacity-100" : "scale-0 opacity-0"
+              }`}
+              style={{
+                transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+                transitionDelay: "300ms",
+              }}
+            >
               <svg width="100" height="12" viewBox="0 0 100 12" style={{ color: "#1a385f" }} className="opacity-60">
                 <path d="M10 6 Q30 3, 50 6 T90 6" stroke="currentColor" strokeWidth="1" fill="none" />
                 <circle cx="50" cy="6" r="1.5" fill="currentColor" />
@@ -90,17 +134,36 @@ export default function GodparentsSection() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
             {/* Groom's Parents */}
             <div
-              className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 sm:p-8 text-center border-2"
-              style={{ borderColor: "#1a385f" }}
+              className={`bg-white/90 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition-all duration-1000 p-6 sm:p-8 text-center border-2 hover:scale-105 transform ${
+                parentsVisible
+                  ? "translate-x-0 translate-y-0 opacity-100 rotate-0 scale-100"
+                  : "-translate-x-full translate-y-8 opacity-0 -rotate-12 scale-75"
+              }`}
+              style={{
+                borderColor: "#1a385f",
+                transitionDelay: "400ms",
+                transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+              }}
             >
               <h3
-                className="text-lg sm:text-xl font-light mb-4 italic"
-                style={{ fontFamily: "Playfair Display, serif", color: "#1a385f" }}
+                className={`text-lg sm:text-xl font-light mb-4 italic transition-all duration-700 ${
+                  parentsVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+                }`}
+                style={{
+                  fontFamily: "Playfair Display, serif",
+                  color: "#1a385f",
+                  transitionDelay: "600ms",
+                }}
               >
                 Padres del Novio
               </h3>
 
-              <div className="space-y-3">
+              <div
+                className={`space-y-3 transition-all duration-700 ${
+                  parentsVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+                }`}
+                style={{ transitionDelay: "700ms" }}
+              >
                 <div>
                   <p
                     className="text-base sm:text-lg font-light text-gray-800"
@@ -108,7 +171,6 @@ export default function GodparentsSection() {
                   >
                     Felipe de Jesus Ramos Bernabé
                   </p>
-
                 </div>
 
                 <div className="flex items-center justify-center my-3">
@@ -126,24 +188,42 @@ export default function GodparentsSection() {
                   >
                     María Francisca Villalvazo Villalvazo
                   </p>
-             
                 </div>
               </div>
             </div>
 
             {/* Bride's Parents */}
             <div
-              className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 sm:p-8 text-center border-2"
-              style={{ borderColor: "#1a385f" }}
+              className={`bg-white/90 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition-all duration-1000 p-6 sm:p-8 text-center border-2 hover:scale-105 transform ${
+                parentsVisible
+                  ? "translate-x-0 translate-y-0 opacity-100 rotate-0 scale-100"
+                  : "translate-x-full translate-y-8 opacity-0 rotate-12 scale-75"
+              }`}
+              style={{
+                borderColor: "#1a385f",
+                transitionDelay: "550ms",
+                transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+              }}
             >
               <h3
-                className="text-lg sm:text-xl font-light mb-4 italic"
-                style={{ fontFamily: "Playfair Display, serif", color: "#1a385f" }}
+                className={`text-lg sm:text-xl font-light mb-4 italic transition-all duration-700 ${
+                  parentsVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+                }`}
+                style={{
+                  fontFamily: "Playfair Display, serif",
+                  color: "#1a385f",
+                  transitionDelay: "750ms",
+                }}
               >
                 Padres de la Novia
               </h3>
 
-              <div className="space-y-3">
+              <div
+                className={`space-y-3 transition-all duration-700 ${
+                  parentsVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+                }`}
+                style={{ transitionDelay: "800ms" }}
+              >
                 <div>
                   <p
                     className="text-base sm:text-lg font-light text-gray-800"
@@ -151,7 +231,6 @@ export default function GodparentsSection() {
                   >
                     Moises Barranco Bernardino
                   </p>
-                
                 </div>
 
                 <div className="flex items-center justify-center my-3">
@@ -169,7 +248,6 @@ export default function GodparentsSection() {
                   >
                     Norma Lorena Vazquez Leal
                   </p>
-              
                 </div>
               </div>
             </div>
@@ -216,13 +294,37 @@ export default function GodparentsSection() {
             {godparents.map((godparent, index) => (
               <div
                 key={index}
-                className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 text-center border-2 hover:scale-105"
-                style={{ borderColor: "#1a385f" }}
+                className={`bg-white/90 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition-all duration-1000 p-6 text-center border-2 hover:scale-105 transform ${
+                  isVisible
+                    ? "translate-x-0 translate-y-0 opacity-100 rotate-0 scale-100"
+                    : "-translate-x-full translate-y-8 opacity-0 -rotate-12 scale-75"
+                }`}
+                style={{
+                  borderColor: "#1a385f",
+                  transitionDelay: `${index * 150}ms`,
+                  transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+                }}
               >
                 <div
-                  className={`inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br ${godparent.bgColor} mb-4 shadow-md`}
+                  className={`inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br ${godparent.bgColor} mb-4 shadow-md transition-all duration-1000 ${
+                    isVisible ? "scale-100 rotate-0" : "scale-0 rotate-180"
+                  }`}
+                  style={{
+                    transitionDelay: `${index * 150 + 200}ms`,
+                  }}
                 >
-                  <godparent.icon className={`${godparent.color} w-6 h-6 sm:w-7 sm:h-7`} />
+                  <img
+                    src={godparent.iconPath || "/placeholder.svg"}
+                    alt={godparent.role}
+                    className={`w-6 h-6 sm:w-7 sm:h-7 transition-all duration-700 ${
+                      isVisible ? "scale-200" : "scale-0"
+                    }`}
+                    style={{
+                      transitionDelay: `${index * 150 + 400}ms`,
+                      filter:
+                        "brightness(0) saturate(100%) invert(13%) sepia(44%) saturate(1835%) hue-rotate(202deg) brightness(95%) contrast(95%)", // CSS filter to match blue color
+                    }}
+                  />
                 </div>
 
                 <div className="mb-3">
@@ -235,12 +337,10 @@ export default function GodparentsSection() {
                         <span className="text-center">{name.trim()}</span>
                         {nameIndex === 0 && (
                           <div className="flex items-center justify-center my-2">
-
                             <span className="mx-2 font-normal" style={{ color: "#1a385f" }}>
                               {" "}
                               &{" "}
                             </span>
-
                           </div>
                         )}
                       </div>
@@ -269,30 +369,6 @@ export default function GodparentsSection() {
               </div>
             ))}
           </div>
-        </div>
-
-        {/* Bottom Message */}
-        <div className="text-center mt-12 sm:mt-16">
-          <div className="flex items-center justify-center mb-4">
-            <div
-              className="w-16 h-px bg-gradient-to-r from-transparent to-transparent"
-              style={{ backgroundColor: "#1a385f" }}
-            ></div>
-            <div className="mx-4">
-              <div className="w-3 h-3 rounded-full" style={{ backgroundColor: "#1a385f" }}></div>
-            </div>
-            <div
-              className="w-16 h-px bg-gradient-to-l from-transparent to-transparent"
-              style={{ backgroundColor: "#1a385f" }}
-            ></div>
-          </div>
-
-          <p
-            className="text-base sm:text-lg text-gray-600 italic font-light"
-            style={{ fontFamily: "Cormorant Garamond, serif" }}
-          >
-            Con amor y gratitud infinita
-          </p>
         </div>
       </div>
     </section>

@@ -29,7 +29,7 @@ export default function SectionPlaces() {
             style={{ fontFamily: "Playfair Display, serif", color: "#1a385f" }}
           >
 
-            <span className="font-normal">Ubicaciones</span>
+            <span className="font-normal">Ubicacion</span>
           </h2>
 
           <div className="flex justify-center mb-6">

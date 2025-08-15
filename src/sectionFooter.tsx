@@ -14,7 +14,6 @@ export default function SectionFooter() {
         <p className="text-4xl font-bold font-serif mb-2">Abby & Gera</p>
         <div className="w-24 h-1 bg-[#fffaef]/50 mx-auto mb-4"></div>
         <p className="text-lg opacity-90">14 de Marzo, 2026</p>
-        <p className="text-sm mt-2 opacity-80">Luis Gerardo Ramos Villalvazo & Norma Abigail Barranco Vazquez</p>
       </div>
     </footer>
   )

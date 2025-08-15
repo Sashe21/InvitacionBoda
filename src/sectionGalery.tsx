@@ -188,17 +188,6 @@ export default function SectionGalery() {
               ))}
             </div>
           </div>
-
-          {/* Decorative bottom element */}
-          <div className="flex items-center justify-center mt-16">
-            <div className="h-px flex-1 max-w-40" style={{ backgroundColor: "#1a385f" }}></div>
-            <div className="mx-8 flex space-x-2">
-              <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#1a385f" }}></div>
-              <div className="w-3 h-3 rounded-full" style={{ backgroundColor: "#1a385f" }}></div>
-              <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#1a385f" }}></div>
-            </div>
-            <div className="h-px flex-1 max-w-40" style={{ backgroundColor: "#1a385f" }}></div>
-          </div>
         </div>
       </section>
 
