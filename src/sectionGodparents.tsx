@@ -37,7 +37,7 @@ export default function GodparentsSection() {
       bgColor: "from-indigo-50 to-blue-50",
     },
     {
-      name: "Lenia Priscila Rivas Vargas & Wiliam Grajeda",
+      name: "Lenia Priscila Rivas Vargas & William Grajeda Aviña",
       iconPath: "/icons/cojin.svg", // Using external SVG file path
       role: "Padrinos de Cojines",
       color: "text-blue-700",
