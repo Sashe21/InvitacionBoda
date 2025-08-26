@@ -29,6 +29,9 @@ const SectionGalery = dynamic(() => import("../sectionGalery"), {
 const ItinerarySection = dynamic(() => import("../sectionitinerary"), {
   loading: () => <div className="h-96 bg-[#fffaef] animate-pulse" />,
 })
+const SectionParents = dynamic(() => import("../sectionParents"), {
+  loading: () => <div className="h-96 bg-[#fffaef] animate-pulse" />,
+})
 const GodparentsSection = dynamic(() => import("../sectionGodparents"), {
   loading: () => <div className="h-96 bg-[#fffaef] animate-pulse" />,
 })
@@ -70,6 +73,10 @@ export default function WeddingInvitation() {
 
         <Suspense fallback={<div className="h-screen bg-[#fffaef] animate-pulse" />}>
           <CountdownSection />
+        </Suspense>
+
+        <Suspense fallback={<div className="h-96 bg-[#fffaef] animate-pulse" />}>
+          <SectionParents />
         </Suspense>
 
         <Suspense fallback={<div className="h-96 bg-[#fffaef] animate-pulse" />}>
