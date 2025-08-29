@@ -135,19 +135,19 @@ export default function CountdownSection() {
           <div
             className={`bg-[#fffaef]/95 backdrop-blur-sm rounded-2xl sm:rounded-3xl border border-[#1a385f]/20 p-3 sm:p-4 md:p-6 lg:p-8 transition-all duration-1000 delay-1100 hover:shadow-2xl hover:scale-[1.02] ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
-            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-0">
+            <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center gap-3 sm:gap-0">
               {[
                 { label: "Días", value: timeLeft.days },
                 { label: "Horas", value: timeLeft.hours },
                 { label: "Minutos", value: timeLeft.minutes },
                 { label: "Segundos", value: timeLeft.seconds },
               ].map((item, index) => (
-                <div key={index} className="flex items-center">
+                <div key={index} className="flex items-center justify-center sm:justify-start">
                   <div
-                    className={`text-center px-2 sm:px-3 md:px-6 transition-all duration-700 delay-${1300 + index * 200} hover:scale-110 cursor-default ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+                    className={`text-center px-1 sm:px-3 md:px-6 transition-all duration-700 delay-${1300 + index * 200} hover:scale-110 cursor-default ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
                   >
                     <div
-                      className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-1 sm:mb-2 md:mb-3 transition-all duration-300 hover:text-[#2a4a6f]"
+                      className="text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-1 sm:mb-2 md:mb-3 transition-all duration-300 hover:text-[#2a4a6f]"
                       style={{ fontFamily: "Playfair Display, serif", color: "#1a385f" }}
                     >
                       {item.value.toString().padStart(2, "0")}
@@ -162,7 +162,7 @@ export default function CountdownSection() {
 
                   {index < 3 && (
                     <div
-                      className={`hidden sm:flex flex-col items-center mx-1 sm:mx-2 md:mx-4 lg:mx-6 transition-all duration-700 delay-${1500 + index * 200} ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}
+                      className={`hidden md:flex flex-col items-center mx-1 sm:mx-2 md:mx-4 lg:mx-6 transition-all duration-700 delay-${1500 + index * 200} ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}
                     >
                       <div className="w-px h-6 sm:h-8 md:h-12 lg:h-16 bg-gradient-to-b from-transparent via-[#1a385f]/40 to-transparent"></div>
                       <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#1a385f]/60 rounded-full my-1 sm:my-2 animate-pulse"></div>

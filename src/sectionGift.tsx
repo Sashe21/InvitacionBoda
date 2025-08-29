@@ -30,7 +30,7 @@ export default function SectionGift() {
                 Hemos preparado una lista de regalos especialmente para ustedes
               </p>
               <a
-                href="https://www.mesaderegalos.lamarina.com.mx/mesa-de-regalos/evento#¡%20NOS%20CASAMOS%20!%20%20GERA%20&%20ABY/eyJpZEV2ZW50byI6Ik1SLTAwMDAzMzg5IiwiZ3Vlc3QiOjEsImlkQ2x1c3RlciI6MH0="
+                href="https://www.mesaderegalos.lamarina.com.mx/mesa-de-regalos/evento#%C2%A1%20NOS%20CASAMOS%20!%20%20GERA%20&%20ABY/eyJpZEV2ZW50byI6Ik1SLTAwMDAzMzg5IiwiZ3Vlc3QiOjEsImlkQ2x1c3RlciI6MH0="
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block bg-[#1a385f] text-[#fffaef] px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-full text-sm sm:text-base font-medium hover:bg-[#1a385f]/90 transition-colors duration-300 shadow-lg hover:shadow-xl"

@@ -36,7 +36,7 @@ export default function SectionPlaces() {
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light mb-4 sm:mb-6 tracking-wide px-4"
             style={{ fontFamily: "Playfair Display, serif", color: "#1a385f" }}
           >
-            <span className="font-normal">Ubicacion</span>
+            <span className="font-normal">Ubicación</span>
           </h2>
 
           <div className="flex justify-center mb-4 sm:mb-6">
@@ -57,7 +57,13 @@ export default function SectionPlaces() {
             className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 italic font-light max-w-xs sm:max-w-md md:max-w-2xl mx-auto px-4"
             style={{ fontFamily: "Cormorant Garamond, serif" }}
           >
-            Nos encantaría compartir contigo cada momento de este día tan especial.
+            Nuestro viaje de amor nos conduce hasta el mar, donde anhelamos compartir contigo el inicio de nuestra nueva vida. 
+          </p>
+          <p
+            className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 italic font-light max-w-xs sm:max-w-md md:max-w-2xl mx-auto px-4"
+            style={{ fontFamily: "Cormorant Garamond, serif" }}
+          >
+            Con el corazón lleno de ilusión, celebraremos nuestra boda en Manzanillo, Colima
           </p>
         </div>
 
