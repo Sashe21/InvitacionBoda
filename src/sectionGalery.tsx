@@ -150,7 +150,7 @@ export default function SectionGalery() {
                   className="text-3xl text-[#1a385f]/90 leading-relaxed mb-4"
                   style={{ fontFamily: "Cormorant Garamond, serif" }}
                 >
-                  "Y sobre todas estas cosas vestíos de amor, que es el vínculo perfecto."
+                  &qout;Y sobre todas estas cosas vestíos de amor, que es el vínculo perfecto.&quot;
                 </p>
                 <p className="text-xl text-[#1a385f]/70" style={{ fontFamily: "Cormorant Garamond, serif" }}>
                   — Colosenses 3:14
