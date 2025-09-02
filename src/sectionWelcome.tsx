@@ -63,9 +63,9 @@ export default function SectionWelcome() {
           <div
             className={`flex items-center justify-center my-4 sm:my-6 md:my-8 transition-all duration-1000 delay-400 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}
           >
-            <div className="w-12 sm:w-16 h-px bg-gradient-to-r from-transparent to-rose-300 animate-pulse"></div>
-            <div className="w-2 h-2 sm:w-3 sm:h-3 bg-rose-300 rounded-full mx-3 sm:mx-4 shadow-lg animate-bounce"></div>
-            <div className="w-12 sm:w-16 h-px bg-gradient-to-l from-transparent to-rose-300 animate-pulse"></div>
+            <div className="w-12 sm:w-16 h-px bg-gradient-to-r from-transparent to-[#1a385f] animate-pulse"></div>
+            <div className="w-2 h-2 sm:w-3 sm:h-3 bg-[#1a385f] rounded-full mx-3 sm:mx-4 shadow-lg animate-bounce"></div>
+            <div className="w-12 sm:w-16 h-px bg-gradient-to-l from-transparent to-[#1a385f] animate-pulse"></div>
           </div>
 
           <div
@@ -73,7 +73,7 @@ export default function SectionWelcome() {
           >
             <h2 className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-white tracking-wider drop-shadow-lg leading-relaxed group cursor-default">
               <span
-                className="font-light uppercase block hover:text-rose-200 transition-colors duration-300"
+                className="font-light uppercase block hover:text-[#1a385f] transition-colors duration-300"
                 style={{
                   fontFamily: "Cormorant Garamond, serif",
                   letterSpacing: "0.15em",
@@ -82,7 +82,7 @@ export default function SectionWelcome() {
                 Luis Gerardo
               </span>
               <span
-                className="font-light uppercase block hover:text-rose-200 transition-colors duration-300"
+                className="font-light uppercase block hover:text-[#1a385f] transition-colors duration-300"
                 style={{
                   fontFamily: "Cormorant Garamond, serif",
                   letterSpacing: "0.15em",
@@ -94,7 +94,7 @@ export default function SectionWelcome() {
           </div>
 
           <div
-            className={`my-3 sm:my-4 md:my-6 transition-all duration-1000 delay-800 ${isVisible ? "opacity-100 rotate-0" : "opacity-0 rotate-12"}`}
+            className={`my-3 sm:my-4 md:my-6 flex justify-center transition-all duration-1000 delay-800 ${isVisible ? "opacity-100 rotate-0" : "opacity-0 rotate-12"}`}
           >
             <span
               className="text-3xl xs:text-4xl sm:text-4xl md:text-5xl lg:text-6xl text-rose-300 drop-shadow-lg hover:scale-110 hover:rotate-12 transition-all duration-300 cursor-default inline-block"
@@ -109,7 +109,7 @@ export default function SectionWelcome() {
           >
             <h2 className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-white tracking-wider drop-shadow-lg leading-relaxed group cursor-default">
               <span
-                className="font-light uppercase block hover:text-rose-200 transition-colors duration-300"
+                className="font-light uppercase block hover:text-[#1a385f] transition-colors duration-300"
                 style={{
                   fontFamily: "Cormorant Garamond, serif",
                   letterSpacing: "0.15em",
@@ -118,7 +118,7 @@ export default function SectionWelcome() {
                 Norma Abigail
               </span>
               <span
-                className="font-light uppercase block hover:text-rose-200 transition-colors duration-300"
+                className="font-light uppercase block hover:text-[#1a385f] transition-colors duration-300"
                 style={{
                   fontFamily: "Cormorant Garamond, serif",
                   letterSpacing: "0.15em",
@@ -136,7 +136,7 @@ export default function SectionWelcome() {
               width="100"
               height="16"
               viewBox="0 0 100 16"
-              className="w-16 xs:w-20 sm:w-24 md:w-28 lg:w-32 text-rose-300 opacity-70 hover:opacity-100 transition-opacity duration-300"
+              className="w-16 xs:w-20 sm:w-24 md:w-28 lg:w-32 text-[#1a385f] opacity-70 hover:opacity-100 transition-opacity duration-300"
             >
               <path
                 d="M8 8 Q25 2, 50 8 T92 8"

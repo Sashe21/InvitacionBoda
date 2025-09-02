@@ -51,7 +51,7 @@ export default function SectionMoreInfo() {
                 </p>
                 <div className="flex justify-center space-x-4">
                   <div className="text-center">
-                    <div className="w-8 h-8 rounded-full mx-auto mb-1 bg-blue-900"></div>
+                    <div className="w-8 h-8 rounded-full mx-auto mb-1" style={{ backgroundColor: "#07B3E3" }}></div>
                     <span className="text-xs" style={{ color: "#1a385f" }}>
                       Azul
                     </span>
@@ -146,12 +146,10 @@ export default function SectionMoreInfo() {
         {/* Additional Info */}
         <div className="text-center space-y-4">
           <div className="inline-block bg-white rounded-xl p-6 shadow-md border" style={{ borderColor: "#1a385f" }}>
-            
             <p className="text-xl leading-relaxed font-bold" style={{ color: "#1a385f" }}>
-  Amamos a los más pequeños, pero esta historia de amor se baila entre grandes. Respetuosamente, les pedimos
-  no llevar niños
-</p>
-
+              Amamos a los más pequeños, pero esta historia de amor se baila entre grandes. Respetuosamente, les pedimos
+              no llevar niños
+            </p>
           </div>
         </div>
       </div>

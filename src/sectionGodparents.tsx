@@ -105,8 +105,8 @@ export default function SectionGodparents() {
             className="text-2xl sm:text-3xl md:text-4xl font-light mb-4 tracking-wide"
             style={{ fontFamily: "Playfair Display, serif", color: "#1a385f" }}
           >
-            <span className="italic font-extralight">Nuestros</span>
-            <span className="ml-3 font-normal">Padrinos</span>
+            <span className="italic font-extralight">Nuestros Padres </span>
+            <span className="ml-3 font-normal">{""}</span>
           </h2>
 
           <div className="flex justify-center mb-4">
@@ -117,7 +117,7 @@ export default function SectionGodparents() {
           </div>
 
           <p
-            className="text-3xl text-gray-600 italic font-light max-w-2xl mx-auto"
+            className="text-gray-600 italic max-w-2xl mx-auto text-lg font-medium"
             style={{ fontFamily: "Cormorant Garamond, serif" }}
           >
             Gracias por ser parte de nuestro gran día y acompañarnos en este momento tan especial
@@ -167,7 +167,7 @@ export default function SectionGodparents() {
                 >
                   {godparent.name.split(" & ").map((name, nameIndex) => (
                     <div key={nameIndex} className="flex flex-col items-center">
-                      <span className="text-center">{name.trim()}</span>
+                      <span className="text-center font-semibold text-base">{name.trim()}</span>
                       {nameIndex === 0 && (
                         <div className="flex items-center justify-center my-2">
                           <span className="mx-2 font-normal" style={{ color: "#1a385f" }}>
@@ -194,7 +194,7 @@ export default function SectionGodparents() {
               </div>
 
               <p
-                className="text-xs sm:text-sm text-gray-600 font-light italic"
+                className="sm:text-sm italic text-sm font-normal text-[rgba(79,43,9,1)]"
                 style={{ fontFamily: "Cormorant Garamond, serif" }}
               >
                 {godparent.role}

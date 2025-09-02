@@ -66,8 +66,8 @@ export default function SectionParents() {
               transitionDelay: "200ms",
             }}
           >
-            <span className="italic font-extralight">Nuestros</span>
-            <span className="ml-3 font-normal">Padres</span>
+            <span className="italic font-extralight">Nuestros Padres </span>
+            <span className="ml-3 font-normal">{""}</span>
           </h2>
 
           <div
@@ -102,13 +102,13 @@ export default function SectionParents() {
             }}
           >
             <h3
-              className={`text-lg sm:text-xl font-light mb-4 italic transition-all duration-700 ${
+              className={`text-lg sm:text-xl mb-4 italic transition-all duration-700 font-semibold ${
                 parentsVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
               }`}
               style={{
                 fontFamily: "Playfair Display, serif",
-                color: "#1a385f",
-                transitionDelay: "600ms",
+                color: "#73410B",
+                transitionDelay: "750ms",
               }}
             >
               Padres del Novio
@@ -122,7 +122,7 @@ export default function SectionParents() {
             >
               <div>
                 <p
-                  className="text-base sm:text-lg font-light text-gray-800"
+                  className="text-base sm:text-lg text-gray-800 font-medium"
                   style={{ fontFamily: "Cormorant Garamond, serif" }}
                 >
                   Felipe de Jesus Ramos Bernabé
@@ -139,7 +139,7 @@ export default function SectionParents() {
 
               <div>
                 <p
-                  className="text-base sm:text-lg font-light text-gray-800"
+                  className="text-base sm:text-lg text-gray-800 font-medium"
                   style={{ fontFamily: "Cormorant Garamond, serif" }}
                 >
                   María Francisca Villalvazo Villalvazo
@@ -162,12 +162,12 @@ export default function SectionParents() {
             }}
           >
             <h3
-              className={`text-lg sm:text-xl font-light mb-4 italic transition-all duration-700 ${
+              className={`text-lg sm:text-xl mb-4 italic transition-all duration-700 font-semibold ${
                 parentsVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
               }`}
               style={{
                 fontFamily: "Playfair Display, serif",
-                color: "#1a385f",
+                color: "#73410B",
                 transitionDelay: "750ms",
               }}
             >
@@ -182,7 +182,7 @@ export default function SectionParents() {
             >
               <div>
                 <p
-                  className="text-base sm:text-lg font-light text-gray-800"
+                  className="text-base sm:text-lg text-gray-800 font-medium"
                   style={{ fontFamily: "Cormorant Garamond, serif" }}
                 >
                   Moises Barranco Bernardino
@@ -199,7 +199,7 @@ export default function SectionParents() {
 
               <div>
                 <p
-                  className="text-base sm:text-lg font-light text-gray-800"
+                  className="text-base sm:text-lg text-gray-800 font-medium"
                   style={{ fontFamily: "Cormorant Garamond, serif" }}
                 >
                   Norma Lorena Vazquez Leal

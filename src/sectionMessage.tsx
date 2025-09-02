@@ -56,7 +56,7 @@ export default function SectionMessage() {
 
           <div className="mb-4">
             <p
-              className={`text-base sm:text-lg md:text-xl lg:text-2xl font-light leading-relaxed sm:leading-loose mb-3 sm:mb-4 transition-all duration-1000 delay-300 hover:scale-105 cursor-default ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+              className={`sm:text-lg md:text-xl lg:text-2xl leading-relaxed sm:leading-loose mb-3 sm:mb-4 transition-all duration-1000 delay-300 hover:scale-105 cursor-default font-semibold text-lg ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
               style={{
                 fontFamily: "Cormorant Garamond, serif",
                 color: "#1a385f",
@@ -66,7 +66,7 @@ export default function SectionMessage() {
             </p>
 
             <p
-              className={`text-base sm:text-lg md:text-xl lg:text-2xl font-light leading-relaxed sm:leading-loose mb-3 sm:mb-4 transition-all duration-1000 delay-500 hover:scale-105 cursor-default ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+              className={`sm:text-lg md:text-xl lg:text-2xl leading-relaxed sm:leading-loose mb-3 sm:mb-4 transition-all duration-1000 delay-500 hover:scale-105 cursor-default font-semibold text-lg ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
               style={{
                 fontFamily: "Cormorant Garamond, serif",
                 color: "#1a385f",
@@ -77,7 +77,7 @@ export default function SectionMessage() {
             </p>
 
             <p
-              className={`text-base sm:text-lg md:text-xl lg:text-2xl font-light italic leading-relaxed sm:leading-loose transition-all duration-1000 delay-700 hover:scale-105 cursor-default ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+              className={`sm:text-lg md:text-xl lg:text-2xl italic leading-relaxed sm:leading-loose transition-all duration-1000 delay-700 hover:scale-105 cursor-default text-lg font-semibold ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
               style={{
                 fontFamily: "Cormorant Garamond, serif",
                 color: "#1a385f",
