@@ -105,7 +105,7 @@ export default function SectionGodparents() {
             className="text-2xl sm:text-3xl md:text-4xl font-light mb-4 tracking-wide"
             style={{ fontFamily: "Playfair Display, serif", color: "#1a385f" }}
           >
-            <span className="italic font-extralight">Nuestros Padres </span>
+            <span className="italic font-extralight">Nuestros Padrinos </span>
             <span className="ml-3 font-normal">{""}</span>
           </h2>
 
