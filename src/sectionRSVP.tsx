@@ -257,7 +257,7 @@ export default function SectionRSVP() {
                   </div>
                   <h3 className="text-lg sm:text-xl font-bold text-pink-600 mb-2">¡Espera un momento! 💕</h3>
                   <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                    No digas "no" todavía... ¡Aún tienes tiempo para pensarlo! Nos encantaría tenerte con nosotros en
+                    No digas &quot;no&quot; todavía... ¡Aún tienes tiempo para pensarlo! Nos encantaría tenerte con nosotros en
                     este día tan especial.
                   </p>
                 </div>
