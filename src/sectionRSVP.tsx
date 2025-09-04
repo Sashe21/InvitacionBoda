@@ -187,7 +187,7 @@ export default function SectionRSVP() {
                   value={formData.name1}
                   onChange={handleInputChange}
                   className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 rounded-lg focus:border-[#1a385f] focus:outline-none focus:ring-2 focus:ring-[#1a385f]/20 transition-all duration-300 text-gray-800 placeholder-gray-400 text-sm sm:text-base hover:border-gray-300 transform focus:scale-[1.02]"
-                  placeholder="Primer nombre completo"
+                  placeholder="Nombre completo"
                 />
 
                 <input
@@ -197,7 +197,7 @@ export default function SectionRSVP() {
                   value={formData.name2}
                   onChange={handleInputChange}
                   className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 rounded-lg focus:border-[#1a385f] focus:outline-none focus:ring-2 focus:ring-[#1a385f]/20 transition-all duration-300 text-gray-800 placeholder-gray-400 text-sm sm:text-base hover:border-gray-300 transform focus:scale-[1.02]"
-                  placeholder="Segundo nombre completo (opcional)"
+                  placeholder="Nombre completo"
                 />
 
                 <input
@@ -207,7 +207,7 @@ export default function SectionRSVP() {
                   value={formData.name3}
                   onChange={handleInputChange}
                   className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 rounded-lg focus:border-[#1a385f] focus:outline-none focus:ring-2 focus:ring-[#1a385f]/20 transition-all duration-300 text-gray-800 placeholder-gray-400 text-sm sm:text-base hover:border-gray-300 transform focus:scale-[1.02]"
-                  placeholder="Tercer nombre completo (opcional)"
+                  placeholder="Nombre completo"
                 />
               </div>
 

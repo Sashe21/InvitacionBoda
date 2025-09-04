@@ -20,31 +20,31 @@ export default function SectionGalery() {
       id: 2,
       src: "/images/GF6.jpg",
       alt: "Beautiful wedding bouquet",
-      caption: "Flores para mi amor - Una sorpresa sencilla, pero llena de amor y promesas.",
+      caption: "Una sorpresa sencilla, pero llena de amor y promesas.",
     },
     {
       id: 3,
       src: "/images/GF1.jpg",
       alt: "Beach wedding reception",
-      caption: 'Celebrando juntos - El "sí" nos unió para siempre en un abrazo eterno.',
+      caption: 'El "sí" nos unió para siempre en un abrazo eterno.',
     },
     {
       id: 4,
       src: "/images/GF3.jpg",
       alt: "Golden hour beach portrait",
-      caption: "Atardecer perfecto - El cielo pintó de colores nuestro momento especial.",
+      caption: "El cielo pintó de colores nuestro momento especial.",
     },
     {
       id: 5,
       src: "/images/GF2.jpg",
       alt: "Elegant beach wedding cake",
-      caption: "Dulce momento - Tus brazos son el lugar donde siempre quiero estar.",
+      caption: "Tus brazos son el lugar donde siempre quiero estar.",
     },
     {
       id: 6,
       src: "/images/GF4.jpg",
       alt: "Bride getting ready",
-      caption: "Preparándome para ti - La noche terminó soñando juntos nuestro futuro.",
+      caption: "La noche terminó soñando juntos nuestro futuro.",
     },
     { id: 7, src: "/images/GF7.jpg", alt: "Wedding party celebration", caption: "Con nuestros seres queridos" },
     { id: 8, src: "/images/GF8.jpg", alt: "Wedding rings with seashells", caption: "Para toda la vida" },
@@ -157,7 +157,7 @@ export default function SectionGalery() {
         id="gallery-section"
         className="py-8 sm:py-12 md:py-16 lg:py-20 px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 relative overflow-hidden -mt-1"
         style={{
-          backgroundImage: "url('/images/GFG.jpg')",
+          backgroundImage: "url('/images/GFG2.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundAttachment: "fixed",
