@@ -157,7 +157,7 @@ export default function SectionGalery() {
         id="gallery-section"
         className="py-8 sm:py-12 md:py-16 lg:py-20 px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 relative overflow-hidden -mt-1"
         style={{
-          backgroundImage: "url('/images/GFG2.jpg')",
+          backgroundImage: "url('/images/GFG3.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundAttachment: "fixed",
@@ -289,20 +289,21 @@ export default function SectionGalery() {
 
           <div className="mt-12 sm:mt-16 md:mt-24 text-center px-2">
             <div className="max-w-4xl mx-auto relative">
-              <div className="absolute inset-0 bg-white/40 backdrop-blur-sm rounded-2xl sm:rounded-3xl shadow-xl border border-white/30"></div>
-              <div className="relative p-6 sm:p-8 md:p-12">
-                <p
-                  className="text-xl sm:text-2xl md:text-3xl text-white leading-relaxed mb-3 sm:mb-4 font-semibold"
-                  style={{ fontFamily: "Cormorant Garamond, serif", textShadow: "2px 2px 8px rgba(0, 0, 0, 0.8)" }}
-                >
-                  &quot;Y sobre todas estas cosas vestíos de amor, que es el vínculo perfecto.&quot;
-                </p>
-                <p
-                  className="text-lg sm:text-xl text-white font-medium"
-                  style={{ fontFamily: "Cormorant Garamond, serif", textShadow: "2px 2px 6px rgba(0, 0, 0, 0.7)" }}
-                >
-                  Colosenses 3:14
-                </p>
+              <div className="bg-[#1a385f]/70 backdrop-blur-md rounded-2xl shadow-xl border border-[#1a385f]/30 hover:bg-[#1a385f]/80 transition-all duration-300 hover:scale-105">
+                <div className="relative p-6 sm:p-8 md:p-12">
+                  <p
+                    className="text-xl sm:text-2xl md:text-3xl text-white leading-relaxed mb-3 sm:mb-4 font-semibold"
+                    style={{ fontFamily: "Cormorant Garamond, serif", textShadow: "2px 2px 8px rgba(0, 0, 0, 0.8)" }}
+                  >
+                    &quot;Y sobre todas estas cosas vestíos de amor, que es el vínculo perfecto.&quot;
+                  </p>
+                  <p
+                    className="text-lg sm:text-xl text-white font-medium opacity-90"
+                    style={{ fontFamily: "Cormorant Garamond, serif" }}
+                  >
+                    Colosenses 3:14
+                  </p>
+                </div>
               </div>
             </div>
           </div>
