@@ -17,7 +17,7 @@ const SectionHosting = () => {
           }, 500) // 500ms delay before animation starts
         }
       },
-      { threshold: 0.2 },
+      { threshold: 0.1 },
     )
 
     if (sectionRef.current) {
@@ -39,7 +39,7 @@ const SectionHosting = () => {
     {
       id: 2,
       name: "Hotel Marbella",
-      phone: "800-727-7757",
+      phone: "341-333-1102",
       address: "Marbella 7, Playa Azul Salagua, 28218 Manzanillo, Col.",
       locationLink: "https://maps.app.goo.gl/mqiuQHfiZgqd3tBb7",
       image: "/images/hotelM.jpg",

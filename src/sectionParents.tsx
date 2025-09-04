@@ -202,7 +202,7 @@ export default function SectionParents() {
                   className="text-base sm:text-lg text-gray-800 font-medium"
                   style={{ fontFamily: "Cormorant Garamond, serif" }}
                 >
-                  Norma Lorena Vazquez Leal
+                  Norma Lorena Vázquez Leal
                 </p>
               </div>
             </div>

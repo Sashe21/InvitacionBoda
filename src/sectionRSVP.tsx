@@ -21,10 +21,12 @@ export default function SectionRSVP() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true)
+          setTimeout(() => {
+            setIsVisible(true)
+          }, 500)
         }
       },
-      { threshold: 0.2 },
+      { threshold: 0.1 },
     )
 
     const section = document.getElementById("rsvp-section")
@@ -248,14 +250,14 @@ export default function SectionRSVP() {
                 <div className="bg-gradient-to-r from-pink-50 to-purple-50 border-2 border-pink-200 rounded-xl p-4 sm:p-6 text-center animate-in slide-in-from-top duration-500">
                   <div className="mb-4">
                     <img
-                      src="/cute-illustration-saying-don-t-say-no-yet--you-sti.jpg"
+                      src="/images/NCon.jpg"
                       alt="No digas no todavía"
                       className="mx-auto rounded-lg shadow-md max-w-full h-auto"
                     />
                   </div>
                   <h3 className="text-lg sm:text-xl font-bold text-pink-600 mb-2">¡Espera un momento! 💕</h3>
                   <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                    No digas &quot;no&quout; todavía... ¡Aún tienes tiempo para pensarlo! Nos encantaría tenerte con nosotros en
+                    No digas "no" todavía... ¡Aún tienes tiempo para pensarlo! Nos encantaría tenerte con nosotros en
                     este día tan especial.
                   </p>
                 </div>

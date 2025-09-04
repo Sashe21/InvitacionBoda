@@ -12,11 +12,13 @@ export default function SectionPlaces() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true)
+          setTimeout(() => {
+            setIsVisible(true)
+          }, 500)
         }
       },
       {
-        threshold: 0.05,
+        threshold: 0.1,
         rootMargin: "50px 0px -50px 0px",
       },
     )

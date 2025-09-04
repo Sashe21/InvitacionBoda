@@ -1,48 +1,176 @@
 "use client"
 import Image from "next/image"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 
 export default function SectionGalery() {
   const [isVisible, setIsVisible] = useState(false)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [isLightboxOpen, setIsLightboxOpen] = useState(false)
   const [lightboxImageIndex, setLightboxImageIndex] = useState(0)
+  const sectionRef = useRef<HTMLDivElement>(null)
 
   const galleryImages = [
-    { id: 1, src: "/images/GF5.jpg", alt: "Romantic beach moment", caption: "Nuestro primer baile..." },
-    { id: 2, src: "/images/GF6.jpg", alt: "Beautiful wedding bouquet", caption: "Flores para mi amor" },
-    { id: 3, src: "/images/GF1.jpg", alt: "Beach wedding reception", caption: "Celebrando juntos" },
-    { id: 4, src: "/images/GF3.jpg", alt: "Golden hour beach portrait", caption: "Atardecer perfecto" },
-    { id: 5, src: "/images/GF2.jpg", alt: "Elegant beach wedding cake", caption: "Dulce momento" },
-    { id: 6, src: "/images/GF4.jpg", alt: "Bride getting ready", caption: "Preparándome para ti" },
+    {
+      id: 1,
+      src: "/images/GF5.jpg",
+      alt: "Romantic beach moment",
+      caption: "Con los ojos vendados, comenzó la magia de nuestra historia.",
+    },
+    {
+      id: 2,
+      src: "/images/GF6.jpg",
+      alt: "Beautiful wedding bouquet",
+      caption: "Flores para mi amor - Una sorpresa sencilla, pero llena de amor y promesas.",
+    },
+    {
+      id: 3,
+      src: "/images/GF1.jpg",
+      alt: "Beach wedding reception",
+      caption: 'Celebrando juntos - El "sí" nos unió para siempre en un abrazo eterno.',
+    },
+    {
+      id: 4,
+      src: "/images/GF3.jpg",
+      alt: "Golden hour beach portrait",
+      caption: "Atardecer perfecto - El cielo pintó de colores nuestro momento especial.",
+    },
+    {
+      id: 5,
+      src: "/images/GF2.jpg",
+      alt: "Elegant beach wedding cake",
+      caption: "Dulce momento - Tus brazos son el lugar donde siempre quiero estar.",
+    },
+    {
+      id: 6,
+      src: "/images/GF4.jpg",
+      alt: "Bride getting ready",
+      caption: "Preparándome para ti - La noche terminó soñando juntos nuestro futuro.",
+    },
     { id: 7, src: "/images/GF7.jpg", alt: "Wedding party celebration", caption: "Con nuestros seres queridos" },
     { id: 8, src: "/images/GF8.jpg", alt: "Wedding rings with seashells", caption: "Para toda la vida" },
   ]
 
   useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => setIsVisible(entry.isIntersecting), { threshold: 0.1 })
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      {
+        threshold: 0.05,
+        rootMargin: "50px 0px -50px 0px",
+      },
+    )
 
-    const section = document.getElementById("gallery-section")
-    if (section) observer.observe(section)
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
     return () => observer.disconnect()
   }, [])
 
   return (
     <>
+      <style jsx>{`
+        @keyframes bounceIn {
+          0% {
+            opacity: 0;
+            transform: scale(0.3) translateY(50px);
+          }
+          50% {
+            opacity: 1;
+            transform: scale(1.05) translateY(-10px);
+          }
+          70% {
+            transform: scale(0.95) translateY(5px);
+          }
+          100% {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+          }
+        }
+
+        @-webkit-keyframes bounceIn {
+          0% {
+            opacity: 0;
+            -webkit-transform: scale(0.3) translateY(50px);
+            transform: scale(0.3) translateY(50px);
+          }
+          50% {
+            opacity: 1;
+            -webkit-transform: scale(1.05) translateY(-10px);
+            transform: scale(1.05) translateY(-10px);
+          }
+          70% {
+            -webkit-transform: scale(0.95) translateY(5px);
+            transform: scale(0.95) translateY(5px);
+          }
+          100% {
+            opacity: 1;
+            -webkit-transform: scale(1) translateY(0);
+            transform: scale(1) translateY(0);
+          }
+        }
+
+        @-moz-keyframes bounceIn {
+          0% {
+            opacity: 0;
+            -moz-transform: scale(0.3) translateY(50px);
+            transform: scale(0.3) translateY(50px);
+          }
+          50% {
+            opacity: 1;
+            -moz-transform: scale(1.05) translateY(-10px);
+            transform: scale(1.05) translateY(-10px);
+          }
+          70% {
+            -moz-transform: scale(0.95) translateY(5px);
+            transform: scale(0.95) translateY(5px);
+          }
+          100% {
+            opacity: 1;
+            -moz-transform: scale(1) translateY(0);
+            transform: scale(1) translateY(0);
+          }
+        }
+
+        .bounce-in {
+          animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+          -webkit-animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+          -moz-animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+          opacity: 0;
+          transform: scale(0.3) translateY(50px);
+          -webkit-transform: scale(0.3) translateY(50px);
+          -moz-transform: scale(0.3) translateY(50px);
+        }
+
+        .bounce-in.animate {
+          animation-play-state: running;
+          -webkit-animation-play-state: running;
+          -moz-animation-play-state: running;
+        }
+      `}</style>
+
       <section
+        ref={sectionRef}
         id="gallery-section"
         className="py-8 sm:py-12 md:py-16 lg:py-20 px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 relative overflow-hidden -mt-1"
         style={{
-          background: `
-            linear-gradient(180deg, rgba(255, 250, 239, 0.95) 0%, #fffaef 20%, #fffaef 80%, rgba(255, 250, 239, 0.95) 100%),
-            radial-gradient(circle at 30% 40%, rgba(26, 56, 95, 0.05) 0%, transparent 50%),
-            radial-gradient(circle at 70% 60%, rgba(255, 182, 193, 0.08) 0%, transparent 50%)
-          `,
+          backgroundImage: "url('/images/GFG.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
         }}
       >
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 sm:top-20 left-4 sm:left-8 w-16 sm:w-32 h-16 sm:h-32 bg-gradient-to-br from-rose-200 to-rose-100 rounded-full blur-2xl"></div>
-          <div className="absolute bottom-10 sm:bottom-20 right-4 sm:right-8 w-20 sm:w-40 h-20 sm:h-40 bg-gradient-to-br from-[#1a385f]/10 to-rose-100 rounded-full blur-2xl"></div>
+        <div className="absolute inset-0 bg-black/40"></div>
+
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <svg className="absolute top-1/4 left-0 w-full h-full opacity-10" viewBox="0 0 1000 800">
+            <path d="M0 200 Q250 150, 500 200 T1000 200" stroke="#fffaef" strokeWidth="2" fill="none" />
+            <path d="M0 400 Q250 350, 500 400 T1000 400" stroke="#fffaef" strokeWidth="1" fill="none" />
+            <path d="M0 600 Q250 550, 500 600 T1000 600" stroke="#fffaef" strokeWidth="2" fill="none" />
+          </svg>
         </div>
 
         <div className="max-w-6xl mx-auto relative">
@@ -52,24 +180,27 @@ export default function SectionGalery() {
             }`}
           >
             <h2
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#1a385f] mb-4 sm:mb-6 tracking-tight px-2"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 tracking-tight px-2"
               style={{
                 fontFamily: "Playfair Display, serif",
-                textShadow: "0 2px 8px rgba(26, 56, 95, 0.1)",
+                textShadow: "2px 2px 8px rgba(0, 0, 0, 0.7)",
               }}
             >
               Nuestros Momentos
             </h2>
 
             <div className="flex items-center justify-center gap-2 sm:gap-4 mb-4 sm:mb-6 md:mb-8">
-              <div className="w-8 sm:w-16 h-0.5 bg-gradient-to-r from-transparent via-[#1a385f] to-[#1a385f]"></div>
-              <div className="w-2 sm:w-3 h-2 sm:h-3 bg-[#1a385f] rounded-full"></div>
-              <div className="w-8 sm:w-16 h-0.5 bg-gradient-to-l from-transparent via-[#1a385f] to-[#1a385f]"></div>
+              <div className="w-8 sm:w-16 h-0.5 bg-gradient-to-r from-transparent via-white to-white"></div>
+              <div className="w-2 sm:w-3 h-2 sm:h-3 bg-white rounded-full"></div>
+              <div className="w-8 sm:w-16 h-0.5 bg-gradient-to-l from-transparent via-white to-white"></div>
             </div>
 
             <p
-              className="text-lg sm:text-xl md:text-2xl text-[#1a385f]/80 leading-relaxed max-w-2xl mx-auto px-4"
-              style={{ fontFamily: "Cormorant Garamond, serif" }}
+              className="text-lg sm:text-xl md:text-2xl text-white leading-relaxed max-w-2xl mx-auto px-4"
+              style={{
+                fontFamily: "Cormorant Garamond, serif",
+                textShadow: "2px 2px 6px rgba(0, 0, 0, 0.8)",
+              }}
             >
               Cada foto cuenta nuestra historia de amor
             </p>
@@ -84,15 +215,18 @@ export default function SectionGalery() {
               {galleryImages.slice(0, 6).map((image, index) => (
                 <div
                   key={image.id}
-                  className={`group cursor-pointer transition-all duration-500 hover:scale-105 ${
-                    index % 2 === 0 ? "rotate-1 hover:rotate-2" : "-rotate-1 hover:-rotate-2"
-                  }`}
+                  className={`group cursor-pointer transition-all duration-1000 hover:scale-105 transform ${
+                    isVisible
+                      ? "translate-x-0 translate-y-0 opacity-100 rotate-0 scale-100"
+                      : "-translate-x-full translate-y-8 opacity-0 -rotate-12 scale-75"
+                  } ${index % 2 === 0 ? "hover:rotate-2" : "hover:-rotate-2"}`}
                   onClick={() => {
                     setLightboxImageIndex(index)
                     setIsLightboxOpen(true)
                   }}
                   style={{
-                    animationDelay: `${index * 150}ms`,
+                    transitionDelay: `${index * 150}ms`,
+                    transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
                   }}
                 >
                   <div className="bg-white p-3 sm:p-4 pb-12 sm:pb-16 shadow-2xl hover:shadow-3xl transition-all duration-500 transform-gpu">
@@ -108,15 +242,21 @@ export default function SectionGalery() {
                       <div className="absolute inset-0 bg-gradient-to-br from-yellow-50/20 via-transparent to-amber-50/20 opacity-40"></div>
                     </div>
                     <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4">
-                      <p
-                        className="text-[#1a385f] text-sm sm:text-base md:text-lg leading-relaxed transform -rotate-1"
-                        style={{
-                          fontFamily: "Kalam, cursive",
-                          textShadow: "0 1px 2px rgba(0,0,0,0.1)",
-                        }}
-                      >
-                        {image.caption}
-                      </p>
+                      <div className="bg-white/90 backdrop-blur-sm rounded-lg p-3 sm:p-4 shadow-lg border border-white/50">
+                        <p
+                          className="text-[#1a385f] text-sm sm:text-base md:text-lg leading-relaxed text-center font-medium"
+                          style={{
+                            fontFamily: "Cormorant Garamond, serif",
+                            textShadow: "0 1px 3px rgba(26, 56, 95, 0.1)",
+                            lineHeight: "1.6",
+                          }}
+                        >
+                          {image.caption}
+                        </p>
+                        <div className="flex justify-center mt-2">
+                          <div className="w-8 h-0.5 bg-gradient-to-r from-transparent via-[#1a385f]/30 to-transparent"></div>
+                        </div>
+                      </div>
                     </div>
                     <div className="absolute -top-1 sm:-top-2 left-4 sm:left-8 w-8 sm:w-16 h-3 sm:h-6 bg-yellow-100/80 transform rotate-12 shadow-sm border border-yellow-200/50"></div>
                     <div className="absolute -top-1 sm:-top-2 right-4 sm:right-8 w-8 sm:w-16 h-3 sm:h-6 bg-yellow-100/80 transform -rotate-12 shadow-sm border border-yellow-200/50"></div>
@@ -152,13 +292,16 @@ export default function SectionGalery() {
               <div className="absolute inset-0 bg-white/40 backdrop-blur-sm rounded-2xl sm:rounded-3xl shadow-xl border border-white/30"></div>
               <div className="relative p-6 sm:p-8 md:p-12">
                 <p
-                  className="text-xl sm:text-2xl md:text-3xl text-[#1a385f]/90 leading-relaxed mb-3 sm:mb-4 font-semibold"
-                  style={{ fontFamily: "Cormorant Garamond, serif" }}
+                  className="text-xl sm:text-2xl md:text-3xl text-white leading-relaxed mb-3 sm:mb-4 font-semibold"
+                  style={{ fontFamily: "Cormorant Garamond, serif", textShadow: "2px 2px 8px rgba(0, 0, 0, 0.8)" }}
                 >
                   &quot;Y sobre todas estas cosas vestíos de amor, que es el vínculo perfecto.&quot;
                 </p>
-                <p className="text-lg sm:text-xl text-[#1a385f]/70 text-[rgba(79,43,9,1)] font-medium" style={{ fontFamily: "Cormorant Garamond, serif" }}>
-                   Colosenses 3:14
+                <p
+                  className="text-lg sm:text-xl text-white font-medium"
+                  style={{ fontFamily: "Cormorant Garamond, serif", textShadow: "2px 2px 6px rgba(0, 0, 0, 0.7)" }}
+                >
+                  Colosenses 3:14
                 </p>
               </div>
             </div>
@@ -208,12 +351,21 @@ export default function SectionGalery() {
               </div>
 
               <div className="mt-4 sm:mt-6 text-center">
-                <p
-                  className="text-[#1a385f] text-lg sm:text-xl md:text-2xl px-2"
-                  style={{ fontFamily: "Kalam, cursive" }}
-                >
-                  {galleryImages[lightboxImageIndex].caption}
-                </p>
+                <div className="bg-white/95 backdrop-blur-sm rounded-xl p-4 sm:p-6 mx-4 shadow-lg border border-white/30">
+                  <p
+                    className="text-[#1a385f] text-lg sm:text-xl md:text-2xl leading-relaxed font-medium"
+                    style={{
+                      fontFamily: "Cormorant Garamond, serif",
+                      textShadow: "0 1px 3px rgba(26, 56, 95, 0.1)",
+                      lineHeight: "1.6",
+                    }}
+                  >
+                    {galleryImages[lightboxImageIndex].caption}
+                  </p>
+                  <div className="flex justify-center mt-3">
+                    <div className="w-12 h-0.5 bg-gradient-to-r from-transparent via-[#1a385f]/40 to-transparent"></div>
+                  </div>
+                </div>
               </div>
             </div>
 

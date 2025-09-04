@@ -9,7 +9,9 @@ export default function SectionMoreInfo() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true)
+          setTimeout(() => {
+            setIsVisible(true)
+          }, 500)
         }
       },
       { threshold: 0.1 },
