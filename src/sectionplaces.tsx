@@ -1,9 +1,36 @@
+"use client"
+
 import { Clock, MapPin, ExternalLink } from "lucide-react"
 import Image from "next/image"
+import { useEffect, useRef, useState } from "react"
 
 export default function SectionPlaces() {
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      {
+        threshold: 0.05,
+        rootMargin: "50px 0px -50px 0px",
+      },
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section
+      ref={sectionRef}
       className="relative py-12 sm:py-16 md:py-20 lg:py-24 px-3 sm:px-4 md:px-6 lg:px-8"
       style={{
         backgroundImage: "url('/images/FP.jpg')",
@@ -24,7 +51,11 @@ export default function SectionPlaces() {
       </div>
 
       <div className="relative max-w-xs sm:max-w-md md:max-w-4xl lg:max-w-6xl mx-auto">
-        <div className="text-center mb-12 sm:mb-16 md:mb-20">
+        <div
+          className={`text-center mb-12 sm:mb-16 md:mb-20 transition-all duration-1000 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
           <div className="flex justify-center mb-4 sm:mb-6">
             <div className="flex items-center gap-1 sm:gap-2">
               <div
@@ -78,8 +109,14 @@ export default function SectionPlaces() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12">
           {/* Ceremony Card */}
           <div
-            className="group bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl md:rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 p-4 sm:p-6 md:p-8 text-center hover:scale-105"
-            style={{ borderColor: "#fffaef", borderWidth: "1px" }}
+            className={`group bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl md:rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-1000 p-4 sm:p-6 md:p-8 text-center hover:scale-105 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+            }`}
+            style={{
+              borderColor: "#fffaef",
+              borderWidth: "1px",
+              transitionDelay: isVisible ? "300ms" : "0ms",
+            }}
           >
             <div className="w-full max-w-xs sm:max-w-sm mx-auto h-20 sm:h-24 md:h-28 rounded-lg sm:rounded-xl mb-3 sm:mb-4 md:mb-6 group-hover:scale-105 transition-transform duration-300 shadow-lg overflow-hidden">
               <Image
@@ -134,8 +171,14 @@ export default function SectionPlaces() {
 
           {/* Reception Card */}
           <div
-            className="group bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl md:rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 p-4 sm:p-6 md:p-8 text-center hover:scale-105"
-            style={{ borderColor: "#fffaef", borderWidth: "1px" }}
+            className={`group bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl md:rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-1000 p-4 sm:p-6 md:p-8 text-center hover:scale-105 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+            }`}
+            style={{
+              borderColor: "#fffaef",
+              borderWidth: "1px",
+              transitionDelay: isVisible ? "450ms" : "0ms",
+            }}
           >
             <div className="w-full max-w-xs sm:max-w-sm mx-auto h-20 sm:h-24 md:h-28 rounded-lg sm:rounded-xl mb-3 sm:mb-4 md:mb-6 group-hover:scale-105 transition-transform duration-300 shadow-lg overflow-hidden">
               <Image

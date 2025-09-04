@@ -55,6 +55,12 @@ export default function SectionRSVP() {
     setIsSubmitting(true)
     setError("")
 
+    if (!formData.message.trim()) {
+      setError("El mensaje es obligatorio. Por favor escribe algo especial para nosotros.")
+      setIsSubmitting(false)
+      return
+    }
+
     try {
       const formDataToSend = new FormData()
       const allNames = [formData.name1.trim(), formData.name2.trim(), formData.name3.trim()]
@@ -63,7 +69,7 @@ export default function SectionRSVP() {
 
       formDataToSend.append("name", allNames)
       formDataToSend.append("attendance", formData.attendance === "yes" ? "Sí confirma" : "No confirma")
-      formDataToSend.append("message", formData.message.trim() || "Sin mensaje")
+      formDataToSend.append("message", formData.message.trim())
       formDataToSend.append(
         "timestamp",
         new Date().toLocaleString("es-MX", {
@@ -77,7 +83,7 @@ export default function SectionRSVP() {
       )
 
       const GOOGLE_SCRIPT_URL =
-        "https://script.google.com/macros/s/AKfycbyT_I9RRrA15rz7Wm-mLrLUpZPmTnRksHOpX3_Y0DX9CLcho1AKSnuqhjcB_G8mxyWE/exec"
+        "https://script.google.com/macros/s/AKfycbxXj0m8fJRas9fwjFeYV5-PW8PG0rLknkpbCd3kvUbj03uFFni2RT5ne6q0YYJhZ7OoHg/exec" // Reemplaza con tu nueva URL de Google Apps Script
 
       const response = await fetch(GOOGLE_SCRIPT_URL, {
         method: "POST",
@@ -104,7 +110,8 @@ export default function SectionRSVP() {
 
   const isFormValid =
     (formData.name1.trim().length >= 2 || formData.name2.trim().length >= 2 || formData.name3.trim().length >= 2) &&
-    formData.attendance
+    formData.attendance &&
+    formData.message.trim().length > 0 // Added message validation to form validity check
 
   return (
     <section
@@ -236,6 +243,24 @@ export default function SectionRSVP() {
                 </div>
               </div>
 
+              {/* Conditional Image Display */}
+              {formData.attendance === "no" && (
+                <div className="bg-gradient-to-r from-pink-50 to-purple-50 border-2 border-pink-200 rounded-xl p-4 sm:p-6 text-center animate-in slide-in-from-top duration-500">
+                  <div className="mb-4">
+                    <img
+                      src="/cute-illustration-saying-don-t-say-no-yet--you-sti.jpg"
+                      alt="No digas no todavía"
+                      className="mx-auto rounded-lg shadow-md max-w-full h-auto"
+                    />
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-bold text-pink-600 mb-2">¡Espera un momento! 💕</h3>
+                  <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                    No digas "no" todavía... ¡Aún tienes tiempo para pensarlo! Nos encantaría tenerte con nosotros en
+                    este día tan especial.
+                  </p>
+                </div>
+              )}
+
               {/* Message Field */}
               <div>
                 <label
@@ -244,7 +269,7 @@ export default function SectionRSVP() {
                   style={{ color: "#1a385f" }}
                 >
                   <MessageSquare className="w-3 h-3 sm:w-4 sm:h-4 inline mr-1 sm:mr-2" />
-                  Mensaje (Opcional)
+                  Mensaje *
                 </label>
                 <textarea
                   id="message"
@@ -253,8 +278,9 @@ export default function SectionRSVP() {
                   onChange={handleInputChange}
                   rows={3}
                   maxLength={500}
+                  required
                   className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 rounded-lg focus:border-[#1a385f] focus:outline-none focus:ring-2 focus:ring-[#1a385f]/20 transition-all duration-300 text-gray-800 placeholder-gray-400 resize-none text-sm sm:text-base hover:border-gray-300 transform focus:scale-[1.02]"
-                  placeholder="Déjanos un mensaje especial... (máximo 500 caracteres)"
+                  placeholder="Déjanos un mensaje especial... (obligatorio, máximo 500 caracteres)"
                 />
                 <div className="text-right text-xs text-gray-500 mt-1">{formData.message.length}/500</div>
               </div>

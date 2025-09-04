@@ -1,9 +1,41 @@
+"use client"
+
+import { useEffect, useState } from "react"
+
 export default function SectionMoreInfo() {
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.1 },
+    )
+
+    const section = document.getElementById("section-more-info")
+    if (section) {
+      observer.observe(section)
+    }
+
+    return () => {
+      if (section) {
+        observer.unobserve(section)
+      }
+    }
+  }, [])
+
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "#fffaef" }}>
+    <section id="section-more-info" className="py-16 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "#fffaef" }}>
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div
+          className={`text-center mb-12 transition-all duration-700 ease-out ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
           <div className="flex items-center justify-center mb-4">
             <div className="h-px flex-1" style={{ backgroundColor: "#1a385f" }}></div>
             <div className="px-6 flex items-center space-x-6">
@@ -30,8 +62,13 @@ export default function SectionMoreInfo() {
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           {/* Women's Dress Code */}
           <div
-            className="bg-white rounded-2xl p-8 shadow-lg border-2 hover:shadow-xl transition-all duration-300"
-            style={{ borderColor: "#1a385f" }}
+            className={`bg-white rounded-2xl p-8 shadow-lg border-2 hover:shadow-xl transition-all duration-700 ease-out ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+            style={{
+              borderColor: "#1a385f",
+              transitionDelay: isVisible ? "300ms" : "0ms",
+            }}
           >
             <div className="text-center mb-6">
               <div className="w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center overflow-hidden">
@@ -84,8 +121,13 @@ export default function SectionMoreInfo() {
 
           {/* Men's Dress Code */}
           <div
-            className="bg-white rounded-2xl p-8 shadow-lg border-2 hover:shadow-xl transition-all duration-300"
-            style={{ borderColor: "#1a385f" }}
+            className={`bg-white rounded-2xl p-8 shadow-lg border-2 hover:shadow-xl transition-all duration-700 ease-out ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+            style={{
+              borderColor: "#1a385f",
+              transitionDelay: isVisible ? "450ms" : "0ms",
+            }}
           >
             <div className="text-center mb-6">
               <div className="w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center overflow-hidden">
@@ -144,7 +186,12 @@ export default function SectionMoreInfo() {
         </div>
 
         {/* Additional Info */}
-        <div className="text-center space-y-4">
+        <div
+          className={`text-center space-y-4 transition-all duration-700 ease-out ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+          style={{ transitionDelay: isVisible ? "600ms" : "0ms" }}
+        >
           <div className="inline-block bg-white rounded-xl p-6 shadow-md border" style={{ borderColor: "#1a385f" }}>
             <p className="text-xl leading-relaxed font-bold" style={{ color: "#1a385f" }}>
               Amamos a los más pequeños, pero esta historia de amor se baila entre grandes. Respetuosamente, les pedimos

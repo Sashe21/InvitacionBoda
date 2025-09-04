@@ -1,7 +1,32 @@
+"use client"
+
 import { MapPin, Phone, ExternalLink } from "lucide-react"
 import Image from "next/image"
+import { useEffect, useRef, useState } from "react"
 
 const SectionHosting = () => {
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            setIsVisible(true)
+          }, 500) // 500ms delay before animation starts
+        }
+      },
+      { threshold: 0.2 },
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
   const accommodations = [
     {
       id: 1,
@@ -30,10 +55,17 @@ const SectionHosting = () => {
   ]
 
   return (
-    <section className="py-12 sm:py-16 md:py-20" style={{ backgroundColor: "#fffaef" }}>
+    <section ref={sectionRef} className="py-12 sm:py-16 md:py-20" style={{ backgroundColor: "#fffaef" }}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12 sm:mb-16">
+        <div
+          className={`text-center mb-12 sm:mb-16 transition-all ease-out ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+          }`}
+          style={{
+            transitionDuration: "1200ms",
+          }}
+        >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4" style={{ color: "#1a385f" }}>
             Hospedaje
           </h2>
@@ -44,11 +76,17 @@ const SectionHosting = () => {
 
         {/* Accommodations Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {accommodations.map((accommodation) => (
+          {accommodations.map((accommodation, index) => (
             <div
               key={accommodation.id}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-              style={{ borderTop: `4px solid #1a385f` }}
+              className={`bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all ease-out transform hover:-translate-y-1 ${
+                isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+              }`}
+              style={{
+                borderTop: `4px solid #1a385f`,
+                transitionDuration: "1200ms",
+                transitionDelay: isVisible ? `${600 + index * 200}ms` : "0ms",
+              }}
             >
               {/* Image */}
               <div className="relative h-48 sm:h-56">

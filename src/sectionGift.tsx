@@ -1,18 +1,60 @@
+"use client"
+
 import { Gift, Heart } from "lucide-react"
+import { useEffect, useRef, useState } from "react"
 
 export default function SectionGift() {
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.1 },
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <section className="pt-0 pb-6 sm:pb-8 md:pb-12 px-3 sm:px-4 md:px-6 lg:px-8 bg-[#fffaef]">
-      <div className="max-w-xs sm:max-w-2xl md:max-w-4xl mx-auto">
+    <section
+      ref={sectionRef}
+      className="relative pt-0 pb-6 sm:pb-8 md:pb-12 px-3 sm:px-4 md:px-6 lg:px-8 min-h-screen flex items-center"
+    >
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-fixed"
+        style={{
+          backgroundImage: "url('/images/GG.jpg')",
+        }}
+      />
+
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/30" />
+
+      {/* Content */}
+      <div className="relative z-10 max-w-xs sm:max-w-2xl md:max-w-4xl mx-auto w-full">
         {/* Header */}
-        <div className="text-center mb-6 sm:mb-8 md:mb-12">
+        <div
+          className={`text-center mb-6 sm:mb-8 md:mb-12 transition-all duration-700 ease-out ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+          }`}
+        >
           <div className="flex items-center justify-center mb-3 sm:mb-4">
-            <div className="h-px bg-[#1a385f] flex-1 max-w-12 sm:max-w-16 md:max-w-20"></div>
-            <Heart className="mx-3 sm:mx-4 w-5 h-5 sm:w-6 sm:h-6 text-[#1a385f]" />
-            <div className="h-px bg-[#1a385f] flex-1 max-w-12 sm:max-w-16 md:max-w-20"></div>
+            <div className="h-px bg-[#fffaef] flex-1 max-w-12 sm:max-w-16 md:max-w-20"></div>
+            <Heart className="mx-3 sm:mx-4 w-5 h-5 sm:w-6 sm:h-6 text-[#fffaef]" />
+            <div className="h-px bg-[#fffaef] flex-1 max-w-12 sm:max-w-16 md:max-w-20"></div>
           </div>
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#1a385f] mb-1 sm:mb-2">Regalos</h2>
-          <p className="text-[#1a385f]/70 text-xs sm:text-sm md:text-base px-2 sm:px-4">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#fffaef] mb-1 sm:mb-2">Regalos</h2>
+          <p className="text-[#fffaef]/80 text-xs sm:text-sm md:text-base px-2 sm:px-4">
             Tu presencia es nuestro mejor regalo, pero si deseas obsequiarnos algo...
           </p>
         </div>
@@ -20,14 +62,20 @@ export default function SectionGift() {
         {/* Gift Options */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
           {/* Mesa de Regalos */}
-          <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border border-[#1a385f]/10 hover:border-[#1a385f]/20 transition-all duration-300">
+          <div
+            className={`bg-[#fffaef]/95 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border border-[#1a385f]/20 hover:border-[#1a385f]/30 transition-all duration-700 ease-out shadow-xl ${
+              isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+            }`}
+            style={{ transitionDelay: isVisible ? "300ms" : "0ms" }}
+          >
             <div className="text-center">
               <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-[#1a385f]/10 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
                 <Gift className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-[#1a385f]" />
               </div>
               <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-[#1a385f] mb-2 sm:mb-3">Mesa de Regalos</h3>
+              <p className="text-[#1a385f]/60 text-xs sm:text-sm font-mono mb-2">Código: MR-3389</p>
               <p className="text-[#1a385f]/70 text-xs sm:text-sm md:text-base mb-4 sm:mb-5 md:mb-6 leading-relaxed px-1 sm:px-2">
-                Hemos preparado una lista de regalos especialmente para ustedes
+                {"\nHemos preparado una lista de regalos especialmente para ustedes"}
               </p>
               <a
                 href="https://www.mesaderegalos.lamarina.com.mx/mesa-de-regalos/evento#%C2%A1%20NOS%20CASAMOS%20!%20%20GERA%20&%20ABY/eyJpZEV2ZW50byI6Ik1SLTAwMDAzMzg5IiwiZ3Vlc3QiOjEsImlkQ2x1c3RlciI6MH0="
@@ -41,7 +89,12 @@ export default function SectionGift() {
           </div>
 
           {/* Lluvia de Sobres */}
-          <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border border-[#1a385f]/10 hover:border-[#1a385f]/20 transition-all duration-300">
+          <div
+            className={`bg-[#fffaef]/95 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border border-[#1a385f]/20 hover:border-[#1a385f]/30 transition-all duration-700 ease-out shadow-xl ${
+              isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+            }`}
+            style={{ transitionDelay: isVisible ? "450ms" : "0ms" }}
+          >
             <div className="text-center">
               <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-[#1a385f]/10 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
                 <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-[#1a385f]">
@@ -52,8 +105,8 @@ export default function SectionGift() {
               </div>
               <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-[#1a385f] mb-2 sm:mb-3">Lluvia de Sobres</h3>
               <p className="text-[#1a385f]/70 text-xs sm:text-sm md:text-base leading-relaxed px-1 sm:px-2">
-                En la fiesta habrá un baúl especial donde podrás depositar tu sobre. Tu gesto de amor será muy apreciado
-                para comenzar nuestra nueva vida juntos.
+                En nuestra recepción encontrarás un baúl especial donde podrás depositar tu sobre. Tu apoyo en efectivo
+                será un gran gesto de amor para comenzar nuestra&nbsp;vida&nbsp;juntos
               </p>
             </div>
           </div>
@@ -62,11 +115,11 @@ export default function SectionGift() {
         {/* Bottom Message */}
         <div className="text-center mt-6 sm:mt-8 md:mt-12">
           <div className="flex items-center justify-center mb-3 sm:mb-4">
-            <div className="h-px bg-[#1a385f]/30 flex-1 max-w-16 sm:max-w-20"></div>
-            <div className="mx-3 sm:mx-4 w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#1a385f] rounded-full"></div>
-            <div className="h-px bg-[#1a385f]/30 flex-1 max-w-16 sm:max-w-20"></div>
+            <div className="h-px bg-[#fffaef]/50 flex-1 max-w-16 sm:max-w-20"></div>
+            <div className="mx-3 sm:mx-4 w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#fffaef] rounded-full"></div>
+            <div className="h-px bg-[#fffaef]/50 flex-1 max-w-16 sm:max-w-20"></div>
           </div>
-          <p className="text-[#1a385f]/60 text-xs sm:text-sm italic px-2 sm:px-4">
+          <p className="text-[#fffaef]/80 text-xs sm:text-sm italic px-2 sm:px-4">
             Lo más importante para nosotros es compartir este día especial contigo
           </p>
         </div>
