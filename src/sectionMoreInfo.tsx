@@ -175,7 +175,6 @@ export default function SectionMoreInfo() {
                       Beige
                     </span>
                   </div>
-                  
                 </div>
               </div>
             </div>

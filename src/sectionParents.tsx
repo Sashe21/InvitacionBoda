@@ -127,6 +127,12 @@ export default function SectionParents() {
                 >
                   Felipe de Jesús Ramos Bernabé
                 </p>
+                <p
+                  className="text-base sm:text-lg text-gray-800 font-medium"
+                  style={{ fontFamily: "Cormorant Garamond, serif" }}
+                >
+                  Fernando Ramos Bernabé
+                </p>
               </div>
 
               <div className="flex items-center justify-center my-3">
