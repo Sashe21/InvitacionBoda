@@ -1,13 +1,7 @@
 "use client"
-
-import { useEffect, useRef, useState } from "react"
 import CardGodparents from "@/components/ui/CardGodparents"
 
 export default function SectionGodparents() {
-  const [visibleCards, setVisibleCards] = useState<boolean[]>([])
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([])
-
   const godparents = [
     {
       name: "Yurith Zepeda Martínez & Damián Barranco Bernardino",
@@ -36,55 +30,8 @@ export default function SectionGodparents() {
     },
   ]
 
-  useEffect(() => {
-    // Initialize refs array and visible cards state
-    cardRefs.current = new Array(godparents.length).fill(null)
-    setVisibleCards(new Array(godparents.length).fill(false))
-  }, [godparents.length])
-
-  useEffect(() => {
-    const observers: IntersectionObserver[] = []
-
-    // Wait for next tick to ensure refs are assigned
-    const timeoutId = setTimeout(() => {
-      cardRefs.current.forEach((cardRef, index) => {
-        if (cardRef) {
-          const observer = new IntersectionObserver(
-            ([entry]) => {
-              if (entry.isIntersecting) {
-                setTimeout(() => {
-                  setVisibleCards((prev) => {
-                    const newVisible = [...prev]
-                    newVisible[index] = true
-                    return newVisible
-                  })
-                }, index * 100) // Stagger the animations
-              }
-            },
-            {
-              threshold: 0.6, // Higher threshold - card must be 60% visible
-              rootMargin: "-100px 0px -100px 0px", // More restrictive margins
-            },
-          )
-
-          observer.observe(cardRef)
-          observers.push(observer)
-        }
-      })
-    }, 100)
-
-    return () => {
-      clearTimeout(timeoutId)
-      observers.forEach((observer) => observer.disconnect())
-    }
-  }, [visibleCards.length])
-
   return (
-    <section
-      ref={sectionRef}
-      className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6"
-      style={{ backgroundColor: "#fffaef" }}
-    >
+    <section className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6" style={{ backgroundColor: "#fffaef" }}>
       {/* Decorative background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <svg className="absolute top-1/4 left-0 w-full h-full opacity-10" viewBox="0 0 1000 800">
@@ -148,12 +95,6 @@ export default function SectionGodparents() {
               role={godparent.role}
               image={godparent.image}
               index={index}
-              visible={visibleCards[index]}
-              cardRef={(el) => {
-                if (cardRefs.current) {
-                  cardRefs.current[index] = el
-                }
-              }}
             />
           ))}
         </div>
