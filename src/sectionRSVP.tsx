@@ -247,7 +247,7 @@ export default function SectionRSVP() {
 
               {/* Conditional Image Display */}
               {formData.attendance === "no" && (
-                <div className="bg-gradient-to-r from-pink-50 to-purple-50 border-2 border-pink-200 rounded-xl p-4 sm:p-6 text-center animate-in slide-in-from-top duration-500">
+                <div className="bg-gradient-to-r from-baige-50 to-purple-50 border-2 border-pink-200 rounded-xl p-4 sm:p-6 text-center animate-in slide-in-from-top duration-500">
                   <div className="mb-4">
                     <img
                       src="/images/NCon.jpg"
@@ -255,10 +255,21 @@ export default function SectionRSVP() {
                       className="mx-auto rounded-lg shadow-md max-w-full h-auto"
                     />
                   </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-pink-600 mb-2">¡Espera un momento! 💕</h3>
+                  <h3 className="text-lg sm:text-xl font-bold mb-2" style={{ color: "#1a385f" }}>¡No digas &quot;NO&quot; todavia...! 💕</h3>
                   <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                    No digas &quot;no&quot; todavía... ¡Aún tienes tiempo para pensarlo! Nos encantaría tenerte con nosotros en
-                    este día tan especial.
+               
+                    ¡Aún tienes tiempo para pensarlo!
+                    
+                    <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+
+                    Tienes hasta el 15 de diciembre de 2025 para confirmar.
+                  </p>
+                  <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+
+                    📩 Escríbenos abajo si quieres que te mandemos un recordatorio
+                    o si prefieres decir definitivamente "NO PUEDO ACOMPAÑARLOS".
+                  </p>
+                  
                   </p>
                 </div>
               )}
@@ -320,15 +331,18 @@ export default function SectionRSVP() {
           className={`text-center mt-4 sm:mt-6 md:mt-8 transition-all duration-1000 delay-1100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
         >
           <p className="text-xs sm:text-sm text-gray-600 px-2 sm:px-4">
-            Si tienes alguna pregunta o problema, contáctanos al{" "}
-            <a
-              href="tel:341-134-8420"
-              className="font-semibold hover:underline transition-all duration-300 hover:scale-105 inline-block"
-              style={{ color: "#1a385f" }}
-            >
-              341-134-8420
-            </a>
-          </p>
+  Si tienes alguna pregunta o problema, contáctanos al{" "}
+  <a
+    href="https://wa.me/3411348420?text=Hola,%20tengo%20una%20pregunta%20o%20problema."
+    className="font-semibold hover:underline transition-all duration-300 hover:scale-105 inline-block"
+    style={{ color: "#1a385f" }}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    341-134-8420
+  </a>
+</p>
+
         </div>
       </div>
     </section>

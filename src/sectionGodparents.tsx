@@ -9,7 +9,7 @@ export default function SectionGodparents() {
       role: "Padrinos de Anillos",
     },
     {
-      name: "Candelaria Bernardino Guzman & Lázaro Barranco Benitez",
+      name: "Candelaria Bernardino Guzmán & Lázaro Barranco Benítez",
       image: "/icons/lazo.svg",
       role: "Padrinos de Lazo",
     },

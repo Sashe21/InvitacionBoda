@@ -92,11 +92,17 @@ const SectionHosting = () => {
               ¿Necesitas ayuda con tu hospedaje?
             </p>
             <p className="text-base" style={{ color: "#1a385f" }}>
-              Si tienes problemas en encontrar un hospedaje manda un mensaje a este contacto{" "}
-              <a href="tel:341-134-8420" className="font-bold hover:underline">
-                341-134-8420
-              </a>
-            </p>
+  Si tienes problemas en encontrar un hospedaje, manda un mensaje a este contacto{" "}
+  <a
+    href="https://wa.me/3411348420?text=Hola,%20tengo%20problemas%20en%20encontrar%20un%20hospedaje."
+    className="font-bold hover:underline"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    341-134-8420
+  </a>
+</p>
+
           </div>
         </div>
       </div>
