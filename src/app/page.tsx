@@ -13,6 +13,7 @@ import SectionWelcome from "@/sectionWelcome"
 import SectionMessage from "../sectionMessage"
 
 
+
 import AdditionalInfoSection from "../sectionAdicional";
 import "../styles/typography.css";
 import "../styles/mobile.css";
@@ -54,6 +55,10 @@ const SectionFooter = dynamic(() => import("../sectionFooter"), {
   loading: () => <div className="h-32 bg-[#fffaef] animate-pulse" />,
 })
 
+const SectionGallery2 = dynamic(() => import("../sectionGaleryP"), {
+  loading: () => <div className="h-32 bg-[#fffaef] animate-pulse" />,
+})
+
 export default function WeddingInvitation() {
   
 
@@ -84,7 +89,7 @@ export default function WeddingInvitation() {
         </Suspense>
 
         <Suspense fallback={<div className="h-96 bg-[#fffaef] animate-pulse" />}>
-          <SectionGalery />
+          <SectionGallery2 />
         </Suspense>
 
         <Suspense fallback={<div className="h-96 bg-[#fffaef] animate-pulse" />}>
@@ -114,6 +119,7 @@ export default function WeddingInvitation() {
         <Suspense fallback={<div className="h-32 bg-[#fffaef] animate-pulse" />}>
           <SectionFooter />
         </Suspense>
+
       </div>
     </main>
       </div>

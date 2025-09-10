@@ -1,7 +1,7 @@
 "use client"
 import { useState, useEffect, useRef } from "react"
 
-interface CardGaleryProps {
+interface CardGallery2Props {
   image: {
     id: number
     src: string
@@ -12,7 +12,7 @@ interface CardGaleryProps {
   onImageClick: () => void
 }
 
-export default function CardGalery({ image, index, onImageClick }: CardGaleryProps) {
+export default function CardGallery2({ image, index, onImageClick }: CardGallery2Props) {
   const [isVisible, setIsVisible] = useState(false)
   const cardRef = useRef<HTMLDivElement>(null)
 
@@ -22,12 +22,12 @@ export default function CardGalery({ image, index, onImageClick }: CardGaleryPro
         if (entry.isIntersecting) {
           setTimeout(() => {
             setIsVisible(true)
-          }, index * 150)
+          }, index * 100)
         }
       },
       {
-        threshold: 0.3,
-        rootMargin: "0px 0px -100px 0px",
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
       },
     )
 
@@ -48,9 +48,7 @@ export default function CardGalery({ image, index, onImageClick }: CardGaleryPro
     <div
       ref={cardRef}
       className={`group cursor-pointer transition-all duration-1000 hover:scale-105 transform ${
-        isVisible
-          ? "translate-x-0 translate-y-0 opacity-100 rotate-0 scale-100"
-          : "-translate-x-full translate-y-8 opacity-0 -rotate-12 scale-75"
+        isVisible ? "translate-x-0 translate-y-0 opacity-100 rotate-0 scale-100" : "translate-y-8 opacity-0 scale-90"
       } ${index % 2 === 0 ? "hover:rotate-2" : "hover:-rotate-2"}`}
       onClick={onImageClick}
       style={{
@@ -67,6 +65,7 @@ export default function CardGalery({ image, index, onImageClick }: CardGaleryPro
           <div className="absolute inset-0 bg-gradient-to-t from-black/5 via-transparent to-white/5 opacity-60"></div>
           <div className="absolute inset-0 bg-gradient-to-br from-yellow-50/20 via-transparent to-amber-50/20 opacity-40"></div>
         </div>
+
         <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4">
           <div className="bg-white/90 backdrop-blur-sm rounded-lg p-3 sm:p-4 shadow-lg border border-white/50">
             <p
@@ -84,6 +83,7 @@ export default function CardGalery({ image, index, onImageClick }: CardGaleryPro
             </div>
           </div>
         </div>
+
         <div className="absolute -top-1 sm:-top-2 left-4 sm:left-8 w-8 sm:w-16 h-3 sm:h-6 bg-yellow-100/80 transform rotate-12 shadow-sm border border-yellow-200/50"></div>
         <div className="absolute -top-1 sm:-top-2 right-4 sm:right-8 w-8 sm:w-16 h-3 sm:h-6 bg-yellow-100/80 transform -rotate-12 shadow-sm border border-yellow-200/50"></div>
       </div>

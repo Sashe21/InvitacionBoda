@@ -1,97 +1,132 @@
-"use client";
+"use client"
 
-import React from "react";
+import { useEffect, useRef, useState } from "react"
 
-interface GodparentCardProps {
-  godparent: {
-    name: string;
-    iconPath: string;
-    role: string;
-    color: string;
-    bgColor: string;
-  };
-  index: number;
-  sectionIsVisible: boolean; // Nueva prop para la visibilidad de la sección padre
+interface CardGodparentsProps {
+  name: string
+  role: string
+  image: string
+  index: number
 }
 
-const GodparentCard: React.FC<GodparentCardProps> = ({ godparent, index, sectionIsVisible }) => {
-  // Determinar la clase de animación basada en el índice para variedad
-  const animationClass = index % 2 === 0 ? "animate-bounce-in-left" : "animate-bounce-in-right";
+export default function CardGodparents({ name, role, image, index }: CardGodparentsProps) {
+  const [isVisible, setIsVisible] = useState(false)
+  const cardRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            setIsVisible(true)
+          }, index * 150)
+          observer.unobserve(entry.target)
+        }
+      },
+      {
+        threshold: 0.3,
+        rootMargin: "-50px 0px -50px 0px",
+      },
+    )
+
+    const currentRef = cardRef.current
+    if (currentRef) {
+      observer.observe(currentRef)
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef)
+      }
+      observer.disconnect()
+    }
+  }, [index])
+
+  const nameParts = name.split(" & ")
+  const firstName = nameParts[0] || name
+  const secondName = nameParts[1] || ""
 
   return (
     <div
-      key={index}
+      ref={cardRef}
       className={`
-        bg-white/90 backdrop-blur-sm rounded-xl shadow-lg p-6 text-center border-2
-        transform transition-transform duration-300 hover:scale-105 hover:shadow-xl
-        ${sectionIsVisible ? animationClass : 'opacity-100'}
+        bg-white/90 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl border-2 hover:scale-105
+        transform transition-all duration-1000 p-6 sm:p-8 text-center max-w-sm mx-auto
+        ${isVisible ? "translate-y-0 opacity-100 rotate-0 scale-100" : "translate-y-8 opacity-0 rotate-1 scale-75"}
       `}
       style={{
         borderColor: "#1a385f",
-        animationDelay: sectionIsVisible ? `${index * 150}ms` : '0ms', // Aplicar retraso solo si la sección es visible
+        transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
       }}
     >
-      <div
-        className={`inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br ${godparent.bgColor} mb-4 shadow-md transition-all duration-1000 ${
-          sectionIsVisible ? "scale-100 rotate-0" : "scale-100 rotate-0" // Mantener visible si no hay animación
-        }`}
-        style={{
-          transitionDelay: sectionIsVisible ? `${index * 150 + 200}ms` : "0ms",
-        }}
-      >
-        <img
-          src={godparent.iconPath || "/placeholder.svg"}
-          alt={godparent.role}
-          className={`w-6 h-6 sm:w-7 sm:h-7 transition-all duration-700 ${sectionIsVisible ? "scale-200" : "scale-200"}`} // Mantener visible si no hay animación
-          style={{
-            transitionDelay: sectionIsVisible ? `${index * 150 + 400}ms` : "0ms",
-            filter:
-              "brightness(0) saturate(100%) invert(13%) sepia(44%) saturate(1835%) hue-rotate(202deg) brightness(95%) contrast(95%)",
-          }}
-        />
-      </div>
-
-      <div className="mb-3">
-        <div
-          className="text-sm sm:text-base font-light leading-relaxed"
-          style={{ fontFamily: "Cormorant Garamond, serif", color: "#1a385f" }}
-        >
-          {godparent.name.split(" & ").map((name, nameIndex) => (
-            <div key={nameIndex} className="flex flex-col items-center">
-              <span className="text-center font-semibold text-base">{name.trim()}</span>
-              {nameIndex === 0 && (
-                <div className="flex items-center justify-center my-2">
-                  <span className="mx-2 font-normal" style={{ color: "#1a385f" }}>
-                    {" "}
-                    &{" "}
-                  </span>
-                </div>
-              )}
-            </div>
-          ))}
+      <div className="space-y-4">
+        <div className="flex justify-center mb-6">
+          <div
+            className="w-12 h-12 rounded-full flex items-center justify-center"
+            style={{ backgroundColor: "#1a385f20" }}
+          >
+            <img
+              src={image || "/placeholder.svg"}
+              alt={`Icono de ${role}`}
+              className="w-10 h-10"
+              style={{
+                filter:
+                  "brightness(0) saturate(100%) invert(11%) sepia(45%) saturate(1352%) hue-rotate(194deg) brightness(95%) contrast(95%)",
+              }}
+            />
+          </div>
         </div>
-      </div>
 
-      <div className="flex items-center justify-center mb-3">
-        <div
-          className="w-6 h-px bg-gradient-to-r from-transparent to-transparent"
-          style={{ backgroundColor: "#1a385f" }}
-        ></div>
-        <div className="w-1.5 h-1.5 rounded-full mx-2" style={{ backgroundColor: "#1a385f" }}></div>
-        <div
-          className="w-6 h-px bg-gradient-to-l from-transparent to-transparent"
-          style={{ backgroundColor: "#1a385f" }}
-        ></div>
-      </div>
+        <div className="space-y-3">
+          <p
+            className="text-base sm:text-lg font-medium"
+            style={{
+              fontFamily: "Cormorant Garamond, serif",
+              color: "#374151",
+            }}
+          >
+            {firstName}
+          </p>
 
-      <p
-        className="sm:text-sm italic text-sm font-normal text-[rgba(79,43,9,1)]"
-        style={{ fontFamily: "Cormorant Garamond, serif" }}
-      >
-        {godparent.role}
-      </p>
+          {secondName && (
+            <>
+              <div className="flex items-center justify-center my-3">
+                
+                <span className="mx-2" style={{ color: "#1a385f" }}>
+                  &
+                </span>
+              
+              </div>
+
+              <p
+                className="text-base sm:text-lg font-medium"
+                style={{
+                  fontFamily: "Cormorant Garamond, serif",
+                  color: "#374151",
+                }}
+              >
+                {secondName}
+              </p>
+            </>
+          )}
+        </div>
+
+        <div className="flex items-center justify-center space-x-3 py-4">
+          <div className="w-8 h-px" style={{ backgroundColor: "#1a385f" }}></div>
+          <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#1a385f" }}></div>
+          <div className="w-8 h-px" style={{ backgroundColor: "#1a385f" }}></div>
+        </div>
+
+        <p
+          className="text-sm italic font-semibold tracking-wide"
+          style={{
+            fontFamily: "Playfair Display, serif",
+            color: "#73410B",
+          }}
+        >
+          {role}
+        </p>
+      </div>
     </div>
-  );
-};
-
-export default GodparentCard;
+  )
+}

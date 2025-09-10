@@ -1,68 +1,83 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import CardGodparents from "@/components/ui/CardGodparents"
 
 export default function SectionGodparents() {
-  const [isVisible, setIsVisible] = useState(false)
+  const [visibleCards, setVisibleCards] = useState<boolean[]>([])
   const sectionRef = useRef<HTMLDivElement>(null)
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([])
 
   const godparents = [
     {
       name: "Yurith Zepeda Martínez & Damián Barranco Bernardino",
-      iconPath: "/icons/anillos.svg",
+      image: "/icons/anillos.svg",
       role: "Padrinos de Anillos",
-      color: "text-blue-800",
-      bgColor: "from-blue-50 to-indigo-50",
     },
     {
       name: "Candelaria Bernardino Guzman & Lázaro Barranco Benitez",
-      iconPath: "/icons/lazo.svg",
+      image: "/icons/lazo.svg",
       role: "Padrinos de Lazo",
-      color: "text-blue-700",
-      bgColor: "from-blue-100 to-slate-50",
     },
     {
       name: "Mariana Romero Zepeda & David Navarro Reyes",
-      iconPath: "/icons/arras.svg",
+      image: "/icons/arras.svg",
       role: "Padrinos de Arras",
-      color: "text-blue-900",
-      bgColor: "from-slate-100 to-blue-50",
     },
     {
       name: "Mariela Areli Rivas Vargas & Sebastián Andrés Hernández Flores",
-      iconPath: "/icons/biblia.svg",
+      image: "/icons/biblia.svg",
       role: "Padrinos de Biblia",
-      color: "text-blue-800",
-      bgColor: "from-indigo-50 to-blue-50",
     },
     {
       name: "Lenia Priscila Rivas Vargas & William Grajeda Aviña",
-      iconPath: "/icons/cojin.svg",
+      image: "/icons/cojin.svg",
       role: "Padrinos de Cojines",
-      color: "text-blue-700",
-      bgColor: "from-blue-50 to-slate-50",
     },
   ]
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
+    // Initialize refs array and visible cards state
+    cardRefs.current = new Array(godparents.length).fill(null)
+    setVisibleCards(new Array(godparents.length).fill(false))
+  }, [godparents.length])
+
+  useEffect(() => {
+    const observers: IntersectionObserver[] = []
+
+    // Wait for next tick to ensure refs are assigned
+    const timeoutId = setTimeout(() => {
+      cardRefs.current.forEach((cardRef, index) => {
+        if (cardRef) {
+          const observer = new IntersectionObserver(
+            ([entry]) => {
+              if (entry.isIntersecting) {
+                setTimeout(() => {
+                  setVisibleCards((prev) => {
+                    const newVisible = [...prev]
+                    newVisible[index] = true
+                    return newVisible
+                  })
+                }, index * 100) // Stagger the animations
+              }
+            },
+            {
+              threshold: 0.6, // Higher threshold - card must be 60% visible
+              rootMargin: "-100px 0px -100px 0px", // More restrictive margins
+            },
+          )
+
+          observer.observe(cardRef)
+          observers.push(observer)
         }
-      },
-      {
-        threshold: 0.05,
-        rootMargin: "50px 0px -50px 0px",
-      },
-    )
+      })
+    }, 100)
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+    return () => {
+      clearTimeout(timeoutId)
+      observers.forEach((observer) => observer.disconnect())
     }
-
-    return () => observer.disconnect()
-  }, [])
+  }, [visibleCards.length])
 
   return (
     <section
@@ -127,79 +142,19 @@ export default function SectionGodparents() {
         {/* Godparents Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 sm:gap-8">
           {godparents.map((godparent, index) => (
-            <div
+            <CardGodparents
               key={index}
-              className={`bg-white/90 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition-all duration-1000 p-6 text-center border-2 hover:scale-105 transform ${
-                isVisible
-                  ? "translate-x-0 translate-y-0 opacity-100 rotate-0 scale-100"
-                  : "-translate-x-full translate-y-8 opacity-0 -rotate-12 scale-75"
-              }`}
-              style={{
-                borderColor: "#1a385f",
-                transitionDelay: `${index * 150}ms`,
-                transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+              name={godparent.name}
+              role={godparent.role}
+              image={godparent.image}
+              index={index}
+              visible={visibleCards[index]}
+              cardRef={(el) => {
+                if (cardRefs.current) {
+                  cardRefs.current[index] = el
+                }
               }}
-            >
-              <div
-                className={`inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br ${godparent.bgColor} mb-4 shadow-md transition-all duration-1000 ${
-                  isVisible ? "scale-100 rotate-0" : "scale-0 rotate-180"
-                }`}
-                style={{
-                  transitionDelay: `${index * 150 + 200}ms`,
-                }}
-              >
-                <img
-                  src={godparent.iconPath || "/placeholder.svg"}
-                  alt={godparent.role}
-                  className={`w-6 h-6 sm:w-7 sm:h-7 transition-all duration-700 ${isVisible ? "scale-200" : "scale-0"}`}
-                  style={{
-                    transitionDelay: `${index * 150 + 400}ms`,
-                    filter:
-                      "brightness(0) saturate(100%) invert(13%) sepia(44%) saturate(1835%) hue-rotate(202deg) brightness(95%) contrast(95%)",
-                  }}
-                />
-              </div>
-
-              <div className="mb-3">
-                <div
-                  className="text-sm sm:text-base font-light leading-relaxed"
-                  style={{ fontFamily: "Cormorant Garamond, serif", color: "#1a385f" }}
-                >
-                  {godparent.name.split(" & ").map((name, nameIndex) => (
-                    <div key={nameIndex} className="flex flex-col items-center">
-                      <span className="text-center font-semibold text-base">{name.trim()}</span>
-                      {nameIndex === 0 && (
-                        <div className="flex items-center justify-center my-2">
-                          <span className="mx-2 font-normal" style={{ color: "#1a385f" }}>
-                            {" "}
-                            &{" "}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="flex items-center justify-center mb-3">
-                <div
-                  className="w-6 h-px bg-gradient-to-r from-transparent to-transparent"
-                  style={{ backgroundColor: "#1a385f" }}
-                ></div>
-                <div className="w-1.5 h-1.5 rounded-full mx-2" style={{ backgroundColor: "#1a385f" }}></div>
-                <div
-                  className="w-6 h-px bg-gradient-to-l from-transparent to-transparent"
-                  style={{ backgroundColor: "#1a385f" }}
-                ></div>
-              </div>
-
-              <p
-                className="sm:text-sm italic text-sm font-normal text-[rgba(79,43,9,1)]"
-                style={{ fontFamily: "Cormorant Garamond, serif" }}
-              >
-                {godparent.role}
-              </p>
-            </div>
+            />
           ))}
         </div>
       </div>

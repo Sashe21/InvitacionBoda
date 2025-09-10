@@ -112,6 +112,7 @@ export default function SectionParents() {
               }}
             >
               Padres del Novio
+              
             </h3>
 
             <div
@@ -121,12 +122,7 @@ export default function SectionParents() {
               style={{ transitionDelay: "700ms" }}
             >
               <div>
-                <p
-                  className="text-base sm:text-lg text-gray-800 font-medium"
-                  style={{ fontFamily: "Cormorant Garamond, serif" }}
-                >
-                  Felipe de Jesús Ramos Bernabé
-                </p>
+                
                 <p
                   className="text-base sm:text-lg text-gray-800 font-medium"
                   style={{ fontFamily: "Cormorant Garamond, serif" }}
@@ -144,6 +140,12 @@ export default function SectionParents() {
               </div>
 
               <div>
+                 <p
+                  className="text-base sm:text-lg text-gray-800 font-medium"
+                  style={{ fontFamily: "Cormorant Garamond, serif" }}
+                >
+                  Felipe de Jesús Ramos Bernabé
+                </p>
                 <p
                   className="text-base sm:text-lg text-gray-800 font-medium"
                   style={{ fontFamily: "Cormorant Garamond, serif" }}

@@ -1,7 +1,7 @@
 "use client"
 
-import { Clock, MapPin, ExternalLink } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
+import CardPlace from "@/components/ui/CardPlaces"
 
 export default function SectionPlaces() {
   const [isVisible, setIsVisible] = useState(false)
@@ -18,7 +18,7 @@ export default function SectionPlaces() {
     }
 
     window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("change", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
   }, [])
 
   useEffect(() => {
@@ -43,6 +43,23 @@ export default function SectionPlaces() {
     return () => observer.disconnect()
   }, [])
 
+  const places = [
+    {
+      title: "Ceremonia",
+      time: "5:30 PM",
+      location: "Mare Jardin de Eventos",
+      image: "/images/mare3.jpg",
+      mapUrl: "https://maps.app.goo.gl/6M1v5sCy65TjPgnUA",
+    },
+    {
+      title: "Recepción",
+      time: "7:30 PM",
+      location: "Mare Jardin de Eventos",
+      image: "/images/mare3.jpg",
+      mapUrl: "https://maps.app.goo.gl/6M1v5sCy65TjPgnUA",
+    },
+  ]
+
   return (
     <section
       ref={sectionRef}
@@ -51,7 +68,7 @@ export default function SectionPlaces() {
         backgroundImage: "url('/images/FP.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundAttachment: isClient && windowWidth > 768 ? "fixed" : "scroll", // Conditional fixed attachment
+        backgroundAttachment: isClient && windowWidth > 768 ? "fixed" : "scroll",
       }}
     >
       <div className="absolute inset-0 bg-black/40"></div>
@@ -123,129 +140,17 @@ export default function SectionPlaces() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12">
-          {/* Ceremony Card */}
-          <div
-            className={`group bg-white rounded-xl sm:rounded-2xl md:rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-1000 p-4 sm:p-6 md:p-8 text-center hover:scale-105 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-            }`}
-            style={{
-              borderColor: "#fffaef",
-              borderWidth: "1px",
-              transitionDelay: isVisible ? "300ms" : "0ms",
-            }}
-          >
-            <div className="w-full max-w-xs sm:max-w-sm mx-auto h-20 sm:h-24 md:h-28 rounded-lg sm:rounded-xl mb-3 sm:mb-4 md:mb-6 group-hover:scale-105 transition-transform duration-300 shadow-lg overflow-hidden">
-              <img
-                src="/images/mare3.jpg"
-                alt="Beach ceremony setup"
-                width={842}
-                height={315}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-              />
-            </div>
-
-            <h3
-              className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light mb-3 sm:mb-4 md:mb-6 tracking-wide"
-              style={{ fontFamily: "Playfair Display, serif", color: "#1a385f" }}
-            >
-              Ceremonia
-            </h3>
-
-            <div className="space-y-3 sm:space-y-4">
-              <div className="flex items-center justify-center gap-2 sm:gap-3">
-                <Clock className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: "#1a385f" }} />
-                <p
-                  className="text-base sm:text-lg md:text-xl font-medium"
-                  style={{ fontFamily: "Cormorant Garamond, serif", color: "#1a385f" }}
-                >
-                  5:30 PM
-                </p>
-              </div>
-
-              <div className="flex items-center justify-center gap-2 sm:gap-3 text-center max-w-xs mx-auto">
-                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" style={{ color: "#1a385f" }} />
-                <p
-                  className="text-sm sm:text-base md:text-lg font-light"
-                  style={{ fontFamily: "Cormorant Garamond, serif", color: "#1a385f" }}
-                >
-                  Mare Jardin de Eventos
-                </p>
-              </div>
-
-              <a
-                href="https://maps.app.goo.gl/6M1v5sCy65TjPgnUA"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 sm:gap-2 transition-colors text-xs sm:text-sm md:text-base font-medium mt-3 sm:mt-4 hover:opacity-80"
-                style={{ color: "#1a385f" }}
-              >
-                <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
-                Ver en Google Maps
-              </a>
-            </div>
-          </div>
-
-          {/* Reception Card */}
-          <div
-            className={`group bg-white rounded-xl sm:rounded-2xl md:rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-1000 p-4 sm:p-6 md:p-8 text-center hover:scale-105 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-            }`}
-            style={{
-              borderColor: "#fffaef",
-              borderWidth: "1px",
-              transitionDelay: isVisible ? "450ms" : "0ms",
-            }}
-          >
-            <div className="w-full max-w-xs sm:max-w-sm mx-auto h-20 sm:h-24 md:h-28 rounded-lg sm:rounded-xl mb-3 sm:mb-4 md:mb-6 group-hover:scale-105 transition-transform duration-300 shadow-lg overflow-hidden">
-              <img
-                src="/images/mare3.jpg"
-                alt="Beach reception setup"
-                width={842}
-                height={315}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-              />
-            </div>
-
-            <h3
-              className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light mb-3 sm:mb-4 md:mb-6 tracking-wide"
-              style={{ fontFamily: "Playfair Display, serif", color: "#1a385f" }}
-            >
-              Recepción
-            </h3>
-
-            <div className="space-y-3 sm:space-y-4">
-              <div className="flex items-center justify-center gap-2 sm:gap-3">
-                <Clock className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: "#1a385f" }} />
-                <p
-                  className="text-base sm:text-lg md:text-xl font-medium"
-                  style={{ fontFamily: "Cormorant Garamond, serif", color: "#1a385f" }}
-                >
-                  7:30 PM
-                </p>
-              </div>
-
-              <div className="flex items-center justify-center gap-2 sm:gap-3 text-center max-w-xs mx-auto">
-                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" style={{ color: "#1a385f" }} />
-                <p
-                  className="text-sm sm:text-base md:text-lg font-light"
-                  style={{ fontFamily: "Cormorant Garamond, serif", color: "#1a385f" }}
-                >
-                  Mare Jardin de Eventos
-                </p>
-              </div>
-
-              <a
-                href="https://maps.app.goo.gl/6M1v5sCy65TjPgnUA"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 sm:gap-2 transition-colors text-xs sm:text-sm md:text-base font-medium mt-3 sm:mt-4 hover:opacity-80"
-                style={{ color: "#1a385f" }}
-              >
-                <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
-                Ver en Google Maps
-              </a>
-            </div>
-          </div>
+          {places.map((place, index) => (
+            <CardPlace
+              key={place.title}
+              title={place.title}
+              time={place.time}
+              location={place.location}
+              image={place.image}
+              mapUrl={place.mapUrl}
+              index={index}
+            />
+          ))}
         </div>
 
         <div className="text-center mt-12 sm:mt-16 md:mt-20">
@@ -266,13 +171,12 @@ export default function SectionPlaces() {
           </div>
 
           <p
-            className="text-base sm:text-lg md:text-xl italic font-light px-4"
+            className="text-base sm:text-lg md:text-xl italic px-4 font-semibold"
             style={{ fontFamily: "Cormorant Garamond, serif", color: "white" }}
           >
             ¡Esperamos verte ahí para celebrar nuestro amor!
           </p>
 
-          {/* Final decorative flourish */}
           <div className="flex justify-center mt-4 sm:mt-6">
             <svg
               width="80"
