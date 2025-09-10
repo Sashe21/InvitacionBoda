@@ -267,7 +267,7 @@ export default function SectionRSVP() {
                   <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
 
                     📩 Escríbenos abajo si quieres que te mandemos un recordatorio
-                    o si prefieres decir definitivamente "NO PUEDO ACOMPAÑARLOS".
+                    o si prefieres decir definitivamente &quot;NO PUEDO ACOMPAÑARLOS&quot;.
                   </p>
                   
                   </p>
