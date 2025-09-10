@@ -6,6 +6,20 @@ import { useEffect, useRef, useState } from "react"
 export default function SectionGift() {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
+  const [isClient, setIsClient] = useState(false)
+  const [windowWidth, setWindowWidth] = useState(0)
+
+  useEffect(() => {
+    setIsClient(true)
+    setWindowWidth(window.innerWidth)
+
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth)
+    }
+
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -33,9 +47,10 @@ export default function SectionGift() {
     >
       {/* Background Image */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-fixed"
+        className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage: "url('/images/GG.jpg')",
+          backgroundAttachment: isClient && windowWidth > 768 ? "fixed" : "scroll",
         }}
       />
 

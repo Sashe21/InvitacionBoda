@@ -38,12 +38,14 @@ const montserrat = Montserrat({
   weight: ["400", "600"],
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Invitación de Boda',
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-  },
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+
 };
 
 

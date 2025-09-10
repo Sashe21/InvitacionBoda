@@ -14,7 +14,13 @@ export default function CountdownSection() {
   const [isClient, setIsClient] = useState(false)
   const [windowWidth, setWindowWidth] = useState(0)
 
-  const weddingDate = new Date("2026-03-14T16:00:00").getTime()
+ // Ciudad de México: GMT-6
+// Ciudad de México: GMT-6, 14 de marzo 2026, 17:30
+const weddingDate = new Date(2026, 2, 14, 17, 30, 0).getTime()
+// Meses empiezan en 0 -> marzo = 2
+
+// Meses empiezan en 0, marzo = 2
+
 
   useEffect(() => {
     setIsClient(true)

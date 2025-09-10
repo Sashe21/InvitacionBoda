@@ -175,12 +175,7 @@ export default function SectionMoreInfo() {
                       Beige
                     </span>
                   </div>
-                  <div className="text-center">
-                    <div className="w-8 h-8 rounded-full mx-auto mb-1 bg-blue-900"></div>
-                    <span className="text-xs" style={{ color: "#1a385f" }}>
-                      Azul Rey
-                    </span>
-                  </div>
+                  
                 </div>
               </div>
             </div>

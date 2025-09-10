@@ -1,5 +1,4 @@
 "use client"
-import Image from "next/image"
 import { useState, useEffect, useRef } from "react"
 
 export default function SectionGalery() {
@@ -155,17 +154,22 @@ export default function SectionGalery() {
       <section
         ref={sectionRef}
         id="gallery-section"
-        className="py-8 sm:py-12 md:py-16 lg:py-20 px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 relative overflow-hidden -mt-1"
-        style={{
-          backgroundImage: "url('/images/GFG4.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundAttachment: "fixed",
-        }}
+        className="relative py-8 sm:py-12 md:py-16 lg:py-20 px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 overflow-hidden -mt-1"
       >
-        <div className="absolute inset-0 bg-black/40"></div>
+        {/* Fixed Background Image */}
+        <div
+          className="absolute inset-0 z-[1] bg-cover bg-center"
+          style={{
+            backgroundImage: "url('/images/GFG4.jpg')",
+            backgroundAttachment: "fixed",
+          }}
+        ></div>
 
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/40 z-[2]"></div>
+
+        {/* Decorative background lines */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-[3]">
           <svg className="absolute top-1/4 left-0 w-full h-full opacity-10" viewBox="0 0 1000 800">
             <path d="M0 200 Q250 150, 500 200 T1000 200" stroke="#fffaef" strokeWidth="2" fill="none" />
             <path d="M0 400 Q250 350, 500 400 T1000 400" stroke="#fffaef" strokeWidth="1" fill="none" />
@@ -173,7 +177,7 @@ export default function SectionGalery() {
           </svg>
         </div>
 
-        <div className="max-w-6xl mx-auto relative">
+        <div className="max-w-6xl mx-auto relative z-[4]">
           <div
             className={`text-center mb-8 sm:mb-12 md:mb-16 transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -231,12 +235,10 @@ export default function SectionGalery() {
                 >
                   <div className="bg-white p-3 sm:p-4 pb-12 sm:pb-16 shadow-2xl hover:shadow-3xl transition-all duration-500 transform-gpu">
                     <div className="relative aspect-square overflow-hidden">
-                      <Image
+                      <img
                         src={image.src || "/placeholder.svg"}
                         alt={image.alt}
-                        fill
-                        className="object-cover transition-all duration-700 group-hover:scale-110"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/5 via-transparent to-white/5 opacity-60"></div>
                       <div className="absolute inset-0 bg-gradient-to-br from-yellow-50/20 via-transparent to-amber-50/20 opacity-40"></div>
@@ -342,12 +344,10 @@ export default function SectionGalery() {
 
             <div className="bg-white p-3 sm:p-4 md:p-6 pb-12 sm:pb-16 md:pb-20 shadow-2xl max-w-3xl mx-auto">
               <div className="relative w-full h-[50vh] sm:h-[60vh] overflow-hidden">
-                <Image
+                <img
                   src={galleryImages[lightboxImageIndex].src || "/placeholder.svg"}
                   alt={galleryImages[lightboxImageIndex].alt}
-                  fill
-                  className="object-cover"
-                  sizes="90vw"
+                  className="w-full h-full object-cover"
                 />
               </div>
 

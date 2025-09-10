@@ -1,12 +1,25 @@
 "use client"
 
 import { Clock, MapPin, ExternalLink } from "lucide-react"
-import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
 
 export default function SectionPlaces() {
   const [isVisible, setIsVisible] = useState(false)
+  const [isClient, setIsClient] = useState(false)
+  const [windowWidth, setWindowWidth] = useState(0)
   const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    setIsClient(true)
+    setWindowWidth(window.innerWidth)
+
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth)
+    }
+
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("change", handleResize)
+  }, [])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -38,7 +51,7 @@ export default function SectionPlaces() {
         backgroundImage: "url('/images/FP.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundAttachment: "fixed",
+        backgroundAttachment: isClient && windowWidth > 768 ? "fixed" : "scroll", // Conditional fixed attachment
       }}
     >
       <div className="absolute inset-0 bg-black/40"></div>
@@ -95,23 +108,24 @@ export default function SectionPlaces() {
 
           <p
             className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 italic font-light max-w-xs sm:max-w-md md:max-w-2xl mx-auto px-4"
-            style={{ fontFamily: "Cormorant Garamond, serif", color: "#fffaef" }}
+            style={{ fontFamily: "Cormorant Garamond, serif", color: "white" }}
           >
             Nuestro viaje de amor nos conduce hasta el mar, donde anhelamos compartir contigo el inicio de nuestra nueva
             vida.
           </p>
           <p
             className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 italic font-light max-w-xs sm:max-w-md md:max-w-2xl mx-auto px-4"
-            style={{ fontFamily: "Cormorant Garamond, serif", color: "#fffaef" }}
+            style={{ fontFamily: "Cormorant Garamond, serif", color: "white" }}
           >
-            Con el corazón lleno de ilusión, celebraremos nuestra boda en Manzanillo, Colima
+            Con el corazón lleno de ilusión, celebraremos nuestra boda en{" "}
+            <span className="font-bold">Manzanillo, Colima</span>
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12">
           {/* Ceremony Card */}
           <div
-            className={`group bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl md:rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-1000 p-4 sm:p-6 md:p-8 text-center hover:scale-105 ${
+            className={`group bg-white rounded-xl sm:rounded-2xl md:rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-1000 p-4 sm:p-6 md:p-8 text-center hover:scale-105 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
             }`}
             style={{
@@ -121,7 +135,7 @@ export default function SectionPlaces() {
             }}
           >
             <div className="w-full max-w-xs sm:max-w-sm mx-auto h-20 sm:h-24 md:h-28 rounded-lg sm:rounded-xl mb-3 sm:mb-4 md:mb-6 group-hover:scale-105 transition-transform duration-300 shadow-lg overflow-hidden">
-              <Image
+              <img
                 src="/images/mare3.jpg"
                 alt="Beach ceremony setup"
                 width={842}
@@ -173,7 +187,7 @@ export default function SectionPlaces() {
 
           {/* Reception Card */}
           <div
-            className={`group bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl md:rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-1000 p-4 sm:p-6 md:p-8 text-center hover:scale-105 ${
+            className={`group bg-white rounded-xl sm:rounded-2xl md:rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-1000 p-4 sm:p-6 md:p-8 text-center hover:scale-105 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
             }`}
             style={{
@@ -183,7 +197,7 @@ export default function SectionPlaces() {
             }}
           >
             <div className="w-full max-w-xs sm:max-w-sm mx-auto h-20 sm:h-24 md:h-28 rounded-lg sm:rounded-xl mb-3 sm:mb-4 md:mb-6 group-hover:scale-105 transition-transform duration-300 shadow-lg overflow-hidden">
-              <Image
+              <img
                 src="/images/mare3.jpg"
                 alt="Beach reception setup"
                 width={842}
@@ -253,7 +267,7 @@ export default function SectionPlaces() {
 
           <p
             className="text-base sm:text-lg md:text-xl italic font-light px-4"
-            style={{ fontFamily: "Cormorant Garamond, serif", color: "#fffaef" }}
+            style={{ fontFamily: "Cormorant Garamond, serif", color: "white" }}
           >
             ¡Esperamos verte ahí para celebrar nuestro amor!
           </p>

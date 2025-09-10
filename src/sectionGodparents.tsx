@@ -8,7 +8,7 @@ export default function SectionGodparents() {
 
   const godparents = [
     {
-      name: "Yurith Zepeda Martínez & Damian Barranco Bernardino",
+      name: "Yurith Zepeda Martínez & Damián Barranco Bernardino",
       iconPath: "/icons/anillos.svg",
       role: "Padrinos de Anillos",
       color: "text-blue-800",
@@ -29,7 +29,7 @@ export default function SectionGodparents() {
       bgColor: "from-slate-100 to-blue-50",
     },
     {
-      name: "Mariela Areli Rivas Vargas & Sebastián Andres Hernández Flores",
+      name: "Mariela Areli Rivas Vargas & Sebastián Andrés Hernández Flores",
       iconPath: "/icons/biblia.svg",
       role: "Padrinos de Biblia",
       color: "text-blue-800",

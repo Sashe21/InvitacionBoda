@@ -5,6 +5,20 @@ import { useEffect, useState } from "react"
 
 export default function SectionWelcome() {
   const [isVisible, setIsVisible] = useState(false)
+  const [isClient, setIsClient] = useState(false)
+  const [windowWidth, setWindowWidth] = useState(0)
+
+  useEffect(() => {
+    setIsClient(true)
+    setWindowWidth(window.innerWidth)
+
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth)
+    }
+
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -28,7 +42,7 @@ export default function SectionWelcome() {
       className="relative w-full min-h-screen min-h-dvh flex items-center justify-center px-4 py-8 sm:py-12 bg-cover bg-center bg-no-repeat overflow-hidden"
       style={{
         backgroundImage: "url('/images/AGCount.jpg')",
-        backgroundAttachment: "fixed", // Added parallax effect for desktop
+        backgroundAttachment: isClient && windowWidth > 768 ? "fixed" : "scroll", // Conditional fixed attachment
       }}
     >
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/50"></div>

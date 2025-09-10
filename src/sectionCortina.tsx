@@ -10,33 +10,34 @@ export default function SectionCortina() {
 
   const openCurtain = () => {
     setCurtainOpen(true)
-    setTimeout(() => {
-      if (audioRef.current) {
-        audioRef.current.play().catch((error) => {
-          console.log("[v0] Audio play failed:", error)
-          setIsPlaying(false)
-        })
+    if (audioRef.current) {
+      // Establecer el volumen a 1 directamente al iniciar la reproducción por interacción del usuario
+      audioRef.current.volume = 1; 
+      audioRef.current.play().then(() => {
         setIsPlaying(true)
-      }
-    }, 500)
+      }).catch((error) => {
+        console.error("Error al reproducir audio al abrir la cortina:", error)
+        setIsPlaying(false)
+        // En caso de que falle la reproducción automática (ej. por políticas del navegador),
+        // el botón de música seguirá estando disponible para el usuario.
+      })
+    }
   }
 
   const toggleMusic = () => {
-    console.log("[v0] Toggle music clicked, current isPlaying:", isPlaying)
     if (audioRef.current) {
       if (isPlaying) {
-        console.log("[v0] Pausing audio")
         audioRef.current.pause()
         setIsPlaying(false)
       } else {
-        console.log("[v0] Playing audio")
-        audioRef.current.play().catch((error) => {
-          console.log("[v0] Audio play failed:", error)
+        audioRef.current.volume = 1; // Asegurar volumen 1 al reproducir/reanudar
+        audioRef.current.play().then(() => {
+          setIsPlaying(true)
+        }).catch((error) => {
+          console.error("Error al reanudar audio:", error)
+          setIsPlaying(false)
         })
-        setIsPlaying(true)
       }
-    } else {
-      console.log("[v0] Audio ref is null")
     }
   }
 
@@ -45,7 +46,7 @@ export default function SectionCortina() {
       className={`fixed inset-0 z-50 transition-all duration-[3000ms] ease-in-out ${curtainOpen ? "pointer-events-none" : ""}`}
     >
       <audio ref={audioRef} loop preload="auto" playsInline>
-        <source src="/audio/wedding-song.mp3" type="audio/mpeg" />
+        <source src="/music/bodaOF.mp3" type="audio/mpeg" />
         <source src="/music/bodaOF.mp3" type="audio/mpeg" />
       </audio>
 

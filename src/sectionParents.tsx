@@ -125,7 +125,7 @@ export default function SectionParents() {
                   className="text-base sm:text-lg text-gray-800 font-medium"
                   style={{ fontFamily: "Cormorant Garamond, serif" }}
                 >
-                  Felipe de Jesus Ramos Bernabé
+                  Felipe de Jesús Ramos Bernabé
                 </p>
               </div>
 
@@ -185,7 +185,7 @@ export default function SectionParents() {
                   className="text-base sm:text-lg text-gray-800 font-medium"
                   style={{ fontFamily: "Cormorant Garamond, serif" }}
                 >
-                  Moises Barranco Bernardino
+                  Moisés Barranco Bernardino
                 </p>
               </div>
 

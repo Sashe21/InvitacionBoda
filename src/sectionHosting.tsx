@@ -39,7 +39,7 @@ const SectionHosting = () => {
     {
       id: 2,
       name: "Hotel Marbella",
-      phone: "341-333-1102",
+      phone: "314-333-1102",
       address: "Marbella 7, Playa Azul Salagua, 28218 Manzanillo, Col.",
       locationLink: "https://maps.app.goo.gl/mqiuQHfiZgqd3tBb7",
       image: "/images/hotelM.jpg",
