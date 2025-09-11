@@ -124,14 +124,14 @@ export default function SectionPlaces() {
           </div>
 
           <p
-            className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 italic font-light max-w-xs sm:max-w-md md:max-w-2xl mx-auto px-4"
+            className="sm:text-lg md:text-xl lg:text-2xl text-gray-600 italic font-light max-w-xs sm:max-w-md md:max-w-2xl mx-auto px-4 text-xl"
             style={{ fontFamily: "Cormorant Garamond, serif", color: "white" }}
           >
             Nuestro viaje de amor nos conduce hasta el mar, donde anhelamos compartir contigo el inicio de nuestra nueva
             vida.
           </p>
           <p
-            className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 italic font-light max-w-xs sm:max-w-md md:max-w-2xl mx-auto px-4"
+            className="sm:text-lg md:text-xl lg:text-2xl text-gray-600 italic font-light max-w-xs sm:max-w-md md:max-w-2xl mx-auto px-4 text-xl"
             style={{ fontFamily: "Cormorant Garamond, serif", color: "white" }}
           >
             Con el corazón lleno de ilusión, celebraremos nuestra boda en{" "}
