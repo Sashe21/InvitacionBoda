@@ -262,7 +262,7 @@ export default function SectionRSVP() {
                     
                     <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
 
-                    Tienes hasta el 15 de diciembre de 2025 para confirmar.
+                    Tienes hasta el 15 de diciembre del 2025 para confirmar.
                   </p>
                   <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
 
