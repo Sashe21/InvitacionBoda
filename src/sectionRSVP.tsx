@@ -245,35 +245,6 @@ export default function SectionRSVP() {
                 </div>
               </div>
 
-              {/* Conditional Image Display */}
-              {formData.attendance === "no" && (
-                <div className="bg-gradient-to-r from-baige-50 to-purple-50 border-2 border-pink-200 rounded-xl p-4 sm:p-6 text-center animate-in slide-in-from-top duration-500">
-                  <div className="mb-4">
-                    <img
-                      src="/images/NCon.jpg"
-                      alt="No digas no todavía"
-                      className="mx-auto rounded-lg shadow-md max-w-full h-auto"
-                    />
-                  </div>
-                  <h3 className="text-lg sm:text-xl font-bold mb-2" style={{ color: "#1a385f" }}>¡No digas &quot;NO&quot; todavia...! 💕</h3>
-                  <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-               
-                    ¡Aún tienes tiempo para pensarlo!
-                    
-                    <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-
-                    Tienes hasta el 15 de diciembre de 2025 para confirmar.
-                  </p>
-                  <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-
-                    📩 Escríbenos abajo si quieres que te mandemos un recordatorio
-                    o si prefieres decir definitivamente &quot;NO PUEDO ACOMPAÑARLOS&quot;.
-                  </p>
-                  
-                  </p>
-                </div>
-              )}
-
               {/* Message Field */}
               <div>
                 <label
