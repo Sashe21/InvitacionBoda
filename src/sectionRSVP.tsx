@@ -57,11 +57,7 @@ export default function SectionRSVP() {
     setIsSubmitting(true)
     setError("")
 
-    if (!formData.message.trim()) {
-      setError("El mensaje es obligatorio. Por favor escribe algo especial para nosotros.")
-      setIsSubmitting(false)
-      return
-    }
+    
 
     try {
       const formDataToSend = new FormData()
@@ -112,8 +108,8 @@ export default function SectionRSVP() {
 
   const isFormValid =
     (formData.name1.trim().length >= 2 || formData.name2.trim().length >= 2 || formData.name3.trim().length >= 2) &&
-    formData.attendance &&
-    formData.message.trim().length > 0 // Added message validation to form validity check
+    formData.attendance
+    
 
   return (
     <section
@@ -245,6 +241,38 @@ export default function SectionRSVP() {
                 </div>
               </div>
 
+<<<<<<< HEAD
+=======
+              {/* Conditional Image Display */}
+              {formData.attendance === "no" && (
+                <div className="bg-gradient-to-r from-baige-50 to-purple-50 border-2 border-pink-200 rounded-xl p-4 sm:p-6 text-center animate-in slide-in-from-top duration-500">
+                  <div className="mb-4">
+                    <img
+                      src="/images/NCon.jpg"
+                      alt="No digas no todavía"
+                      className="mx-auto rounded-lg shadow-md max-w-full h-auto"
+                    />
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-bold mb-2" style={{ color: "#1a385f" }}>¡No digas &quot;NO&quot; todavia...! 💕</h3>
+                  <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+               
+                    ¡Aún tienes tiempo para pensarlo!
+                    
+                    <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+
+                    Tienes hasta el 15 de diciembre del 2025 para confirmar.
+                  </p>
+                  <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+
+                    📩 Escríbenos abajo si quieres que te mandemos un recordatorio
+                    o si prefieres decir definitivamente &quot;NO PUEDO ACOMPAÑARLOS&quot;.
+                  </p>
+                  
+                  </p>
+                </div>
+              )}
+
+>>>>>>> 4d46c4d3d25da52f34f68b8f65a2f44a78aa6c4f
               {/* Message Field */}
               <div>
                 <label
@@ -253,7 +281,7 @@ export default function SectionRSVP() {
                   style={{ color: "#1a385f" }}
                 >
                   <MessageSquare className="w-3 h-3 sm:w-4 sm:h-4 inline mr-1 sm:mr-2" />
-                  Mensaje *
+                  Mensaje 
                 </label>
                 <textarea
                   id="message"
@@ -262,9 +290,9 @@ export default function SectionRSVP() {
                   onChange={handleInputChange}
                   rows={3}
                   maxLength={500}
-                  required
+                  
                   className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 rounded-lg focus:border-[#1a385f] focus:outline-none focus:ring-2 focus:ring-[#1a385f]/20 transition-all duration-300 text-gray-800 placeholder-gray-400 resize-none text-sm sm:text-base hover:border-gray-300 transform focus:scale-[1.02]"
-                  placeholder="Déjanos un mensaje especial... (obligatorio, máximo 500 caracteres)"
+                  placeholder="Déjanos un mensaje especial... (Máximo 500 caracteres)"
                 />
                 <div className="text-right text-xs text-gray-500 mt-1">{formData.message.length}/500</div>
               </div>

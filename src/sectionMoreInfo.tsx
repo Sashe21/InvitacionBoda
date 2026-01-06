@@ -51,8 +51,8 @@ export default function SectionMoreInfo() {
           <h2 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: "#1a385f" }}>
             Código de Vestimenta
           </h2>
-          <p className="text-lg" style={{ color: "#1a385f" }}>
-            Elegante
+          <p className="text-3xl" style={{ color: "#1a385f" }}>
+            Elegante Playero
           </p>
         </div>
 
